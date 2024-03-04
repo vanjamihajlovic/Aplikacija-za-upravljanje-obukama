@@ -1,0 +1,8 @@
+.naslov .nav-item {
+    color: white; /* Postavljamo boju teksta na bijelu */
+    font-family: Arial, sans-serif; /* Postavljamo font na Arial ili drugi sans-serif font */
+  }
+  .nav-item {
+    margin-right: 10px; /* Dodajemo razmak između svake dugmad */
+  }
+ 
