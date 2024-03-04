@@ -1,4 +1,5 @@
 ﻿using CourseManagementApp.Model;
+using CourseManagementApp.Persistence.DataSeed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -33,9 +34,7 @@ namespace CourseManagementApp.Persistence
                 .HasForeignKey(cc => cc.CandidateId);
 
 
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "ADMINISTRATOR", NormalizedName = "ADMINISTRATOR" });
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "CANDIDATE", NormalizedName = "CANDIDATE" });
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "MENTOR", NormalizedName = "MENTOR" });
+            builder.SeedUsersAndRoles();
         }
     }
 }

@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace CourseManagementApp.Model
 {
     public class User : IdentityUser
     {
+        [Required]
+        [MaxLength(100)]
         public string FirstName { get; set; }
-        public string LastName { get; set; } 
-        public string Password { get; set; }
-        public string Email { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string LastName { get; set; }
+        [Required]
         public Role Role { get; set; }
         public ICollection<CandidateCourse> Courses { get; set; }
     }

@@ -8,8 +8,12 @@ namespace CourseManagementApp.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        [Required]
+        [MaxLength(100)]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(1000)]
         public string Description { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }
