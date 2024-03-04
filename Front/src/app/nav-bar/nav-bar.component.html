@@ -16,13 +16,15 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalTraining">Add Training</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" href="#">Add Candidate</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCandidate">Add Candidate</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" href="#">Add Mentor</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMentor">Add Mentor</button>
+
           </li>
           <li class="nav-item">
-            <button class="nav-link" href="#">Info</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">Info</button>
+
           </li>
         </ul>
         <!-- Left links -->
@@ -51,11 +53,11 @@
                   </div>
                 <div class="form-group">
                   <label for="exampleInputNoModules">No.Modules</label>
-                  <input type="number" class="form-control" formControlName="startdate" id="exampleInputNoModules1" placeholder="No.Modules">
+                  <input type="number" class="form-control" formControlName="modules" id="exampleInputNoModules1" placeholder="No.Modules">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputDueDate1">Due date</label>
-                    <input type="date" class="form-control" formControlName="enddate" id="exampleInputDueDate1" placeholder="Due date">
+                    <input type="date" class="form-control" formControlName="duedate" id="exampleInputDueDate1" placeholder="Due date">
                 </div>
                 <button type="button" class="btn btn-primary">ADD</button>
               <!--  <button type="submit" class="btn btn-primary">Save</button>-->
@@ -64,6 +66,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="modal fade" id="exampleModalTraining" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -91,6 +95,116 @@
                   <input type="text" class="form-control" formControlName="mentor" id="exampleInputMentor1" placeholder="Mentor">
                 </div>
                 <button type="button" class="btn btn-primary">ADD</button>
+              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalCandidate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputName3">Name</label>
+                <input type="text" class="form-control" formControlName="candidateName" id="exampleInputName3" placeholder="CandidateName" >
+              </div>
+                <div class="form-group">
+                    <label for="exampleInputSurname3">Surname</label>
+                    <input type="text" class="form-control" formControlName="CandidateSurname" id="exampleInputSurname3" placeholder="CandidateSurname">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Email</label>
+                  <input type="text" class="form-control" formControlName="CandidateEmail" id="exampleInputEmail3" placeholder="CandidateEmail">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword3">Candidate Password</label>
+                  <input type="text" class="form-control" formControlName="CandidatePassword" id="exampleInputPassword3" placeholder="CandidatePassword">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputAddress3">Candidate Address</label>
+                  <input type="text" class="form-control" formControlName="CandidateAddress" id="exampleInputAddress3" placeholder="CandidateAddress">
+                </div>
+                <button type="button" class="btn btn-primary">ADD</button>
+              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModalMentor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputName4">Name</label>
+                <input type="text" class="form-control" formControlName="MentorName" id="exampleInputName4" placeholder="MentorName" >
+              </div>
+                <div class="form-group">
+                    <label for="exampleInputSurname4">Surname</label>
+                    <input type="text" class="form-control" formControlName="MentorSurname" id="exampleInputSurname4" placeholder="MentorSurname">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail4">Email</label>
+                  <input type="text" class="form-control" formControlName="MentorEmail" id="exampleInputEmail4" placeholder="MentorEmail">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword4">Candidate Password</label>
+                  <input type="text" class="form-control" formControlName="MentorPassword" id="exampleInputPassword4" placeholder="MentorPassword">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputAddress4">Candidate Address</label>
+                  <input type="text" class="form-control" formControlName="MentorAddress" id="exampleInputAddress4" placeholder="MentorAddress">
+                </div>
+                <button type="button" class="btn btn-primary">ADD</button>
+              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputName2">Name</label>
+                  <input type="text" class="form-control" formControlName="nameinfo" id="exampleInputName2" placeholder="Primer" readonly="true">
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" formControlName="emailinfo" id="exampleInputEmail1" placeholder="primer@gmail.com" readonly="true">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputAdress">Address</label>
+                    <input type="text" class="form-control" formControlName="addressinfo" id="exampleInputAdress" placeholder="Adresa Adresa 123" readonly="true">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputRole">Role</label>
+                  <input type="text" class="form-control" formControlName="roleinfo" id="exampleInputRole" placeholder="ADMIN" readonly="true">
+                </div>
+                
               <!--  <button type="submit" class="btn btn-primary">Save</button>-->
               </form>
         </div>
