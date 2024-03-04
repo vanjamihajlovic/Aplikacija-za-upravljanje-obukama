@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -102,6 +101,12 @@ builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(JwtOptio
 builder.Services.ConfigureOptions<JwtOptionsSetup>();
 
 var app = builder.Build();
+
+app.UseCors(builder => builder
+        .WithOrigins("http://localhost:4200") // Replace with your Angular client app's URL
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
 
 app.UseMiddleware<ExceptionMiddleware>();
 

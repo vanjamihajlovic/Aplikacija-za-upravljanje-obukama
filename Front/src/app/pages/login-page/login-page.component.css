@@ -1,0 +1,10 @@
+.example-margin {
+    margin: 0 12px;
+  }
+  .center {
+    margin: auto;
+    width: 50%;
+    border-radius: 10px;
+    background-color: palegreen;
+    padding: 10px;
+  }
