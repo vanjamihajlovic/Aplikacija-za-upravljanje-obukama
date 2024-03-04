@@ -10,10 +10,10 @@
         <!-- Left links -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <button class="nav-link" href="#">Add Course</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Course</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" href="#">Add Training</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalTraining">Add Training</button>
           </li>
           <li class="nav-item">
             <button class="nav-link" href="#">Add Candidate</button>
@@ -31,3 +31,69 @@
     </div>
     <!-- Container wrapper -->
   </nav>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputName1">Name</label>
+                  <input type="text" class="form-control" formControlName="name" id="exampleInputName1" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputDescription1">Description</label>
+                    <input type="text" class="form-control" formControlName="description" id="exampleInputDescription1" placeholder="Description">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputNoModules">No.Modules</label>
+                  <input type="number" class="form-control" formControlName="startdate" id="exampleInputNoModules1" placeholder="No.Modules">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputDueDate1">Due date</label>
+                    <input type="date" class="form-control" formControlName="enddate" id="exampleInputDueDate1" placeholder="Due date">
+                </div>
+                <button type="button" class="btn btn-primary">ADD</button>
+              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalTraining" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputName1">Candidates</label>
+                  <!-- <mat-form-field appearance="fill">
+                    <mat-label>Toppings</mat-label>
+                    <mat-select [formControl]="toppings" multiple>
+                      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputDescription1">Courses</label>
+                    <input type="text" class="form-control" formControlName="courses" id="exampleInputCourses1" placeholder="Courses">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputNoModules">Mentor</label>
+                  <input type="text" class="form-control" formControlName="mentor" id="exampleInputMentor1" placeholder="Mentor">
+                </div>
+                <button type="button" class="btn btn-primary">ADD</button>
+              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
