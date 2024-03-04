@@ -1,21 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CourseManagementApp.Model
 {
 
-    public class CandidateCourse 
+    public class CandidateCourse
     {
-        /*[Key]
-        [Column(Order = 1)]*/
+        [Required]
         public string CandidateId { get; set; }
+        [Required]
         public User Candidate { get; set; }
-        /*[Key]
-        [Column(Order = 2)]*/
+        [Required]
         public Guid CourseId { get; set; }
+        [Required]
         public Course Course { get; set; }
+        public int ModulesFinished { get; set; }
+        [MaxLength(1000)]
         public string FeedBack { get; set; }
+        [Range(0, 10)]
         public int Grade { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }
