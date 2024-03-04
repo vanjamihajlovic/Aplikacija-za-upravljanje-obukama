@@ -1,0 +1,6 @@
+<div *ngFor="let kartica of kartice" class="kartica">
+    <h2>{{ kartica.name }}</h2>
+    <img [src]="kartica.imageUrl" alt="{{ kartica.name }} Slika" />
+    <p>{{ kartica.description }}</p>
+  </div>
+  
