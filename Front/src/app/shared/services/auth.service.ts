@@ -33,6 +33,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
         map((res) => {
           localStorage.setItem('token', res.accessToken);
           this.userClaims = this.jwtHelper.decodeToken();
+          localStorage.setItem('role', this.userClaims['role']);
+          localStorage.setItem('userId', this.userClaims['id']);
           this.loginSource.next(true);
           return true;
         })
@@ -44,30 +46,21 @@ import { JwtHelperService } from '@auth0/angular-jwt';
       this.loginSource.next(false);
     }
   
-    getUserRole(): string {
-      return this.userClaims.role;
+    getUserRole(): string | null {
+      return localStorage.getItem('role');
     }
   
     getUserClaims() : any {
       return this.userClaims;
+    }
+
+    getUserId(): string | null{
+      return localStorage.getItem('id')
     }
   
     isLogged(): boolean {
       if (!this.jwtHelper.tokenGetter())
         return false;
       return true;
-    }
-  
-    private handleError<T>(operation = 'operation', result?: T) {
-      return (error: any): Observable<T> => {
-        // TODO: send the error to remote logging infrastructure
-        console.error(error); // log to console instead
-        alert("Email or username already registered");
-        // TODO: better job of transforming error for user consumption
-        console.log(`${operation} failed: ${error.message}`);
-  
-        // Let the app keep running by returning an empty result.
-        return of(result as T);
-      };
     }
   }
