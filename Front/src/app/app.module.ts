@@ -1,28 +1,48 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AdminComponent } from './admin/admin.component';
 import { InfoComponent } from './info/info.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonModule} from '@angular/material/button'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     AdminComponent,
-    InfoComponent
+    InfoComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule, 
+    FormsModule,
+    CommonModule, 
+    HttpClientModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token')
+      }
+    })
   ],
   providers: [
     provideAnimationsAsync()
