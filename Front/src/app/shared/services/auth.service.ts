@@ -55,7 +55,7 @@ import { Credentials } from '../model/credentials';
     }
 
     getUserId(): string | null{
-      return localStorage.getItem('id')
+      return localStorage.getItem('userId')
     }
   
     isLogged(): boolean {

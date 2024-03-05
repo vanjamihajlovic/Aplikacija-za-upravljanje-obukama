@@ -108,39 +108,39 @@
   <!-- <div class="modal fade" id="exampleModalCandidate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header"> -->
-         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
-          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header"> 
+         <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form>
               <div class="form-group">
                 <label for="exampleInputName3">Name</label>
-                <input type="text" class="form-control" formControlName="candidateName" id="exampleInputName3" placeholder="CandidateName" >
+                <input type="text" class="form-control"  id="exampleInputName3" placeholder="{{user.email}}" >
               </div>
                 <div class="form-group">
                     <label for="exampleInputSurname3">Surname</label>
-                    <input type="text" class="form-control" formControlName="CandidateSurname" id="exampleInputSurname3" placeholder="CandidateSurname">
+                    <input type="text" class="form-control"  id="exampleInputSurname3" placeholder="{{user.firstName}}">
                   </div>
                 <div class="form-group">
                   <label for="exampleInputEmail3">Email</label>
-                  <input type="text" class="form-control" formControlName="CandidateEmail" id="exampleInputEmail3" placeholder="CandidateEmail">
+                  <input type="text" class="form-control" id="exampleInputEmail3" placeholder="{{user.lastName}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword3">Candidate Password</label>
-                  <input type="text" class="form-control" formControlName="CandidatePassword" id="exampleInputPassword3" placeholder="CandidatePassword">
+                  <input type="text" class="form-control"  id="exampleInputPassword3" placeholder="CandidatePassword">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputAddress3">Candidate Address</label>
-                  <input type="text" class="form-control" formControlName="CandidateAddress" id="exampleInputAddress3" placeholder="CandidateAddress">
+                  <input type="text" class="form-control" id="exampleInputAddress3" placeholder="CandidateAddress">
                 </div>
-                <button type="button" class="btn btn-primary">ADD</button> -->
-              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
+                <!-- <button type="button" class="btn btn-primary">ADD</button> 
+              <button type="submit" class="btn btn-primary">Save</button> -->
               <!-- </form>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>  -->
 
 
   <!-- <div class="modal fade" id="exampleModalMentor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,37 +181,35 @@
   </div> -->
 
 
-  <!-- <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header"> -->
-         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
-          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header"> 
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form>
                 <div class="form-group">
-                  <label for="exampleInputName2">Name</label>
-                  <input type="text" class="form-control" formControlName="nameinfo" id="exampleInputName2" placeholder="Primer" readonly="true">
+                  <label for="exampleInputName2">First Name</label>
+                  <input type="text" class="form-control"  id="exampleInputName2" placeholder="{{user.firstName}}" readonly="true">
 
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="text" class="form-control" formControlName="emailinfo" id="exampleInputEmail1" placeholder="primer@gmail.com" readonly="true">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="{{user.lastName}}" readonly="true">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputAdress">Address</label>
-                    <input type="text" class="form-control" formControlName="addressinfo" id="exampleInputAdress" placeholder="Adresa Adresa 123" readonly="true">
+                    <label for="exampleInputAdress">E-mail</label>
+                    <input type="text" class="form-control"  id="exampleInputAdress" placeholder="{{user.email}}" readonly="true">
                   </div>
                 <div class="form-group">
                   <label for="exampleInputRole">Role</label>
-                  <input type="text" class="form-control" formControlName="roleinfo" id="exampleInputRole" placeholder="ADMIN" readonly="true">
+                  <input type="text" class="form-control" id="exampleInputRole" placeholder="{{user.role}}" readonly="true">
                 </div>
-                 -->
-              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
-              <!-- </form>
+                   
+              </form>
         </div>
       </div>
     </div>
-  </div> -->
+  </div> -
   <router-outlet></router-outlet>
