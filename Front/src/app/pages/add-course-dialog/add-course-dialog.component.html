@@ -1,1 +1,50 @@
-<p>add-course-dialog works!</p>
+<form [formGroup]="form">
+    <div class="container">
+        <h1 mat-dialog-title>Add Course</h1> 
+        <div mat-dialog-content class="row"> 
+        <p>Name</p> 
+        <mat-form-field> 
+            <input matInput formControlName="name" required>
+        </mat-form-field>
+        <p>Description</p> 
+        <mat-form-field> 
+            <textarea matInput formControlName="description"></textarea> 
+        </mat-form-field>
+        <p>Start Date</p> 
+        <input matInput [matDatepicker]="firstPicker" formControlName="startDate">
+        <mat-datepicker-toggle matIconSuffix [for]="firstPicker"></mat-datepicker-toggle>
+        <mat-datepicker #firstPicker></mat-datepicker>
+        <p>Duration</p> 
+        <mat-form-field> 
+            <input matInput formControlName="duration" required>
+        </mat-form-field>
+        <p>Number of Modules</p> 
+        <mat-form-field> 
+            <input matInput formControlName="nModules" required>
+        </mat-form-field>
+        <p>Mentor</p> 
+        <mat-form-field>
+            <mat-label>Select Object</mat-label>
+            <mat-select [(value)]="selectedMentor" (selectionChange)="selectMentor($event.value)">
+                <mat-option *ngFor="let option of mentors" [value]="option">
+                {{ option.firstName }} {{option.lastName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <ng-multiselect-dropdown
+                [placeholder]="'Canidates'"
+                [settings]="dropdownSettings"
+                [data]="candidates"
+                [(ngModel)]="selectedCandidates"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                (onDeSelect)="onDeSelect($event)"
+                >
+            </ng-multiselect-dropdown>
+        </div>
+        <div mat-dialog-actions class="d-flex justify-content-between"> 
+        <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button> 
+        <button mat-raised-button color="primary" [mat-dialog-close]="form.value" cdkFocusInitial>Ok</button> 
+        </div>
+    </div>
+    </form> 

@@ -20,6 +20,11 @@ import { MatButtonModule} from '@angular/material/button';
 import { AddTrainingComponent } from './pages/add-training/add-training.component'; 
 import { MatTableModule} from '@angular/material/table';
 import { AddCourseDialogComponent } from './pages/add-course-dialog/add-course-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,12 @@ import { AddCourseDialogComponent } from './pages/add-course-dialog/add-course-d
     MatButtonModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    NgMultiSelectDropDownModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token')
