@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ServiceService } from '../service.service';
 import { User } from '../shared/model/User';
+import { Mentor } from '../shared/model/Mentor';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,11 +20,15 @@ export class NavBarComponent implements OnInit {
   isLogged: boolean = false;
   userRole: string | null = '';
   userId : string | null = '';
-  constructor(private formbuilder: FormBuilder, private authService: AuthService, private router: Router,  private _service: ServiceService){}
-  user : User = new User();
-  
+  formData !: FormGroup;
 
- 
+
+  constructor(private formbuilder: FormBuilder, private authService: AuthService, private router: Router,  private _service: ServiceService){
+  
+  }
+  user : User = new User();
+  mentor: Mentor = new Mentor();
+  
   ngOnInit(): void {
     this.authService.loginObserver.subscribe((val) => {
       this.isLogged = val;
@@ -34,6 +39,14 @@ export class NavBarComponent implements OnInit {
       }
     });
     this.fetchProducts();
+
+    this.formData = this.formbuilder.group({
+      name: [''],
+      surname: [''],
+      email: [''],
+      password: [''],
+      address: ['']
+    });
   }  
   
 
@@ -52,6 +65,24 @@ export class NavBarComponent implements OnInit {
     );
   }
 
+ 
+onSendMentor() {
+  if (this.formData && this.formData.valid) {
+    console.log(this.mentor);
+    this._service.sendFormData(this.mentor).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  } else {
+    console.log('Forma nije validna');
+  }
+}
+
+  
   logout(): void {
     this.authService.logout();
     this.userRole = '';
