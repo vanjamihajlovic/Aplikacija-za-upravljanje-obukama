@@ -55,6 +55,7 @@ builder.Services.AddDbContext<CourseManagementDbContext>((sp, options) =>
 // Configure dependency injection
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddTransient<ExceptionMiddleware>();
 
 // Configure identity

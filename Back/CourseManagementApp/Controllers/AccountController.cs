@@ -10,10 +10,12 @@ namespace CourseManagementApp.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IUserAuthenticationService _userAuthenticationService;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IUserAuthenticationService userAuthenticationService)
+        public AccountController(IUserAuthenticationService userAuthenticationService, IAccountService accountService)
         {
             _userAuthenticationService = userAuthenticationService;
+            _accountService = accountService;
         }
 
         /// <summary>
@@ -36,6 +38,14 @@ namespace CourseManagementApp.Controllers
 
             }
             return Ok(await _userAuthenticationService.ValidateUserLogin(userLogin));
+        }
+
+        //[Authorize]
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Login(string id)
+        {
+            return Ok(await _accountService.GetUserById(id));
         }
     }
 }
