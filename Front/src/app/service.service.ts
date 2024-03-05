@@ -13,7 +13,10 @@ import { User } from './shared/model/User';
 
 export class ServiceService {
   private baseUrl = 'http://localhost:5275/api/account/';
+
   private userInfoEndpoint = '/info';
+  private mentorEndpoint = '/mentor';
+  
 
 
 
@@ -23,6 +26,10 @@ export class ServiceService {
   getUserInfo(userId: string | null): Observable<User> {
     const url = this.baseUrl + userId;
     return this.http.get<User>(url);
+  }
+
+  sendFormData(formData: any): Observable<any>{
+    return this.http.post<any>(this.baseUrl + 'addMentor', formData);
   }
 
 }

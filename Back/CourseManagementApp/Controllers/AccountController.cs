@@ -47,5 +47,20 @@ namespace CourseManagementApp.Controllers
         {
             return Ok(await _accountService.GetUserById(id));
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
+        [HttpPost("addMentor")]
+        public async Task<IActionResult> AddMentor([FromBody] MentorRegistrationDTO mentorRegistrationDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+
+            }
+            return Ok(await _accountService.RegisterMentorAsync(mentorRegistrationDTO));
+        }
     }
 }

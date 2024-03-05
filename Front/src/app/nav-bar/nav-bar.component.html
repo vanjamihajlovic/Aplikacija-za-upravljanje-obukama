@@ -143,43 +143,40 @@
   </div>  -->
 
 
-  <!-- <div class="modal fade" id="exampleModalMentor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="exampleModalMentor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header"> -->
-         <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Add</h1>-->
-          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header"> 
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form>
               <div class="form-group">
                 <label for="exampleInputName4">Name</label>
-                <input type="text" class="form-control" formControlName="MentorName" id="exampleInputName4" placeholder="MentorName" >
+                <input type="text" class="form-control" id="exampleInputName4" placeholder="MentorName" [(ngModel)]="mentor.name" [ngModelOptions]="{standalone: true}">
               </div>
                 <div class="form-group">
                     <label for="exampleInputSurname4">Surname</label>
-                    <input type="text" class="form-control" formControlName="MentorSurname" id="exampleInputSurname4" placeholder="MentorSurname">
+                    <input type="text" class="form-control" id="exampleInputSurname4" placeholder="MentorSurname" [(ngModel)]="mentor.surname" [ngModelOptions]="{standalone: true}" >
                   </div>
                 <div class="form-group">
                   <label for="exampleInputEmail4">Email</label>
-                  <input type="text" class="form-control" formControlName="MentorEmail" id="exampleInputEmail4" placeholder="MentorEmail">
+                  <input type="text" class="form-control" id="exampleInputEmail4" placeholder="MentorEmail" [(ngModel)]="mentor.email" [ngModelOptions]="{standalone: true}" >
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword4">Candidate Password</label>
-                  <input type="text" class="form-control" formControlName="MentorPassword" id="exampleInputPassword4" placeholder="MentorPassword">
+                  <label for="exampleInputPassword4">Mentor Password</label>
+                  <input type="text" class="form-control" id="exampleInputPassword4" placeholder="MentorPassword" [(ngModel)]="mentor.password" [ngModelOptions]="{standalone: true}" >
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputAddress4">Candidate Address</label>
-                  <input type="text" class="form-control" formControlName="MentorAddress" id="exampleInputAddress4" placeholder="MentorAddress">
+                  <label for="exampleInputAddress4">Mentor Address</label>
+                  <input type="text" class="form-control" id="exampleInputAddress4" placeholder="MentorAddress" [(ngModel)]="mentor.address" [ngModelOptions]="{standalone: true}" >
                 </div>
-                <button type="button" class="btn btn-primary">ADD</button> -->
-              <!--  <button type="submit" class="btn btn-primary">Save</button>-->
-              <!-- </form>
+                <button type="button" class="btn btn-primary" (click)="onSendMentor()">ADD</button>
+               </form>
         </div>
       </div>
     </div>
-  </div> -->
-
+  </div>
 
    <div class="modal fade" id="exampleModalInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
