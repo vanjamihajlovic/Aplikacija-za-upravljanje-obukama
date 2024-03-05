@@ -2,8 +2,12 @@ export class Credentials implements ICredentials {
     email: string = "";
     password: string = "";
 
-    constructor() {
-    }
+    public constructor(obj?: any) {
+        if (obj) {
+          this.email = obj.email;
+          this.password = obj.password;
+        }
+      }
     
 }
 

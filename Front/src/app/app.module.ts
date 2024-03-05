@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
-import {MatButtonModule} from '@angular/material/button'; 
+import { MatButtonModule} from '@angular/material/button'; 
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token')

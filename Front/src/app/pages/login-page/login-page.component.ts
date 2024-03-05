@@ -20,7 +20,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(): void {
+  logIn(): void {
     this.authService.login(this.credentials).subscribe(res => {
 
       this.router.navigate(['/']);

@@ -1,10 +1,44 @@
-.example-margin {
-    margin: 0 12px;
-  }
-  .center {
-    margin: auto;
-    width: 50%;
-    border-radius: 10px;
-    background-color: palegreen;
-    padding: 10px;
-  }
+body {
+  overflow:auto;
+  background-image: url(/assets/login.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.login-mat-card-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-mat-card {
+  display: flex;
+  align-self: center;
+  width: max-content;
+  border-radius: 5px;
+  margin:auto;
+  
+}
+
+.login-mat-card mat-form-field {
+  width: 300px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.login-mat-card-buttons{
+display: flex;
+justify-content: center;
+}
+
+.login-page{
+  height: 100vh;
+  display: flex;
+  align-content: center;
+}

@@ -1,4 +1,5 @@
-﻿using CourseManagementApp.Model;
+﻿using CourseManagementApp.Exceptions;
+using CourseManagementApp.Model;
 using CourseManagementApp.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -45,7 +46,7 @@ namespace CourseManagementApp.Util
             var roles = await _userManager.GetRolesAsync(user);
             foreach (var role in roles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim("role", role));
             }
             return claims;
         }
@@ -85,8 +86,7 @@ namespace CourseManagementApp.Util
             }
             catch (Exception ex)
             {
-                return null;
-                //throw new InvalidTokenException("Invalid token(s)", ex);
+                throw new InvalidTokenException("Invalid token(s)", ex);
             }
         }
     }
