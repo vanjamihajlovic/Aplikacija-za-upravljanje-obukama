@@ -55,7 +55,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     }
 
     getUserId(): string | null{
-      return localStorage.getItem('id')
+      return localStorage.getItem('userId')
     }
   
     isLogged(): boolean {
