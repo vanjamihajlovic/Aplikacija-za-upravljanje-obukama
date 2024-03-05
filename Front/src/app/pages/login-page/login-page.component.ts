@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Credentials } from '../../shared/model/Credentials';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Credentials } from '../../shared/model/credentials';
 
 @Component({
   selector: 'app-login-page',
