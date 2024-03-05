@@ -55,7 +55,9 @@ export class NavBarComponent implements OnInit {
     this._service.getUserInfo(this.userId).subscribe(
       (data) => {
         this.user = data;
-        if (this.user.role == '1'){  this.user.role= "Admin"};
+        if (this.user.role == '1'){  this.user.role= "Admin"}
+        else if (this.user.role == '2'){  this.user.role= "Mentor"}
+        else {this.user.role = "Candidate"};
         console.log(this.user);
       },
       (error) => {
