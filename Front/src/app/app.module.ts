@@ -16,7 +16,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatButtonModule} from '@angular/material/button'; 
+import { MatButtonModule} from '@angular/material/button';
+import { AddTrainingComponent } from './pages/add-training/add-training.component'; 
+import { MatTableModule} from '@angular/material/table';
+import { AddCourseDialogComponent } from './pages/add-course-dialog/add-course-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -24,7 +32,9 @@ import { MatButtonModule} from '@angular/material/button';
     NavBarComponent,
     AdminComponent,
     InfoComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AddTrainingComponent,
+    AddCourseDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +48,13 @@ import { MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    NgMultiSelectDropDownModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token')
