@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Training } from '../../shared/model/training';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCourseDialogComponent } from '../add-course-dialog/add-course-dialog.component';
-import { Course } from '../../shared/model/Course';
+import { Course } from '../../shared/model/course';
 
 
 
