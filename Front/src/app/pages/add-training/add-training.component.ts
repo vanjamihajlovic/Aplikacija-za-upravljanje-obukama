@@ -7,6 +7,7 @@ import { Course } from '../../shared/model/course';
 import { TrainingService } from '../../shared/services/training.service';
 
 
+
 @Component({
   selector: 'app-add-training',
   templateUrl: './add-training.component.html',

@@ -33,7 +33,6 @@ namespace CourseManagementApp.Service.Implementation
                 {
                     var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = addedCourse.Id };
                     await _unitOfWork.CandidateCourseRepository.Add(candidateCourse);
-                    await _unitOfWork.CompleteAsync();
                 }
             }
             await _unitOfWork.CompleteAsync();

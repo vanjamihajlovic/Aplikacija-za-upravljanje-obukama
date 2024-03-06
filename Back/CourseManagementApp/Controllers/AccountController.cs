@@ -62,5 +62,21 @@ namespace CourseManagementApp.Controllers
             }
             return Ok(await _accountService.RegisterMentorAsync(mentorRegistrationDTO));
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
+        [HttpPost("addCandidate")]
+        public async Task<IActionResult> AddCandidate(CandidateRegistrationDTO candidateRegistrationDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(await _accountService.RegisterCnadidateAsync(candidateRegistrationDTO));
+
+        }
+
     }
 }

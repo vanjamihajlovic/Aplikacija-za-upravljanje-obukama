@@ -1,0 +1,33 @@
+
+<div class="projects">
+    <div class="grouping-header">
+      <div class="row">
+        <div class="col col-xs-6">
+          <h3 class="project-title float-left">Courses</h3>
+        </div>
+      </div>
+    </div>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Mentor</th>
+        <th scope="col">Grade</th>
+        <th scope="col">Feedback</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let currentIndex = index;">
+        <th scope="row">{{ currentIndex + 1 }}</th>
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.startDate| date: 'dd/MM/yyyy' }}</td>
+        <td>{{ course.mentor }}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -8,5 +8,7 @@ namespace CourseManagementApp.Service.Inteface
     {
         Task<User> GetUserById(string id);
         Task<IdentityResult> RegisterMentorAsync(MentorRegistrationDTO userForRegistration);
+
+        Task<IdentityResult> RegisterCnadidateAsync(CandidateRegistrationDTO candidateForRegistration);
     }
 }
