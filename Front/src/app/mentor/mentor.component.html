@@ -1,7 +1,7 @@
 <div *ngFor="let kurs of kursevi " class="kursevi" (click)="openModal(kurs)">
     <mat-card>
         <mat-card-header>
-          <mat-card-title>{{ kurs.name }}</mat-card-title>
+          <mat-card-title>Name:{{ kurs.name }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <p>Description: {{ kurs.description }}</p>
