@@ -36,4 +36,8 @@ export class ServiceService {
     return this.http.post<any>(this.baseUrl + 'addCandidate', formData);
   }
 
+  sendFormMentorCandidates(formData: any): Observable<any>{
+    return this.http.post<any>(this.baseUrl + 'candidates', formData);
+  }
+
 }
