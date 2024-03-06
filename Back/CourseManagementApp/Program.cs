@@ -1,9 +1,12 @@
+using CourseManagementApp.Mapper;
 using CourseManagementApp.Middleware;
 using CourseManagementApp.Model;
 using CourseManagementApp.Options;
 using CourseManagementApp.Persistence;
+using CourseManagementApp.Repository;
 using CourseManagementApp.Service.Implementation;
 using CourseManagementApp.Service.Inteface;
+using CourseManagementApp.UnitOfWork;
 using CourseManagementApp.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -50,13 +53,25 @@ IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettin
 builder.Services.AddDbContext<CourseManagementDbContext>((sp, options) =>
 {
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"));
+    options.EnableSensitiveDataLogging();
 });
 
 // Configure dependency injection
+builder.Services.AddScoped<DbContext, CourseManagementDbContext>();
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ITrainingService, TrainingService>();
+builder.Services.AddScoped<IGenericRepository<Training, Guid>, GenericRepository<Training, Guid>>();
+builder.Services.AddScoped<IGenericRepository<Course, Guid>, GenericRepository<Course, Guid>>();
+builder.Services.AddScoped<IGenericRepository<CandidateCourse, Guid>, GenericRepository<CandidateCourse, Guid>>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<ExceptionMiddleware>();
+
+
+// Configure auto mapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Configure identity
 builder.Services.AddIdentity<User, IdentityRole>(o =>

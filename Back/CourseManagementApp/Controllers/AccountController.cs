@@ -43,7 +43,7 @@ namespace CourseManagementApp.Controllers
         //[Authorize]
         [AllowAnonymous]
         [HttpGet("{id}")]
-        public async Task<IActionResult> Login(string id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await _accountService.GetUserById(id));
         }

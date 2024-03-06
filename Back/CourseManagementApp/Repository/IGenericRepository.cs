@@ -1,9 +1,8 @@
-﻿using CourseManagementApp.Model;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace CourseManagementApp.Repository
 {
-    public interface IGenericRepository<T, Key> where T : IEntity<Key>
+    public interface IGenericRepository<T, Key>
     {
         IQueryable<T> GetAll();
         Task<T> GetByIdAsync(Key id, params Expression<Func<T, object>>[] includes);

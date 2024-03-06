@@ -17,8 +17,11 @@ namespace CourseManagementApp.Model
         [Required]
         public int NumOfModules { get; set; }
         [Required]
-        public DateTime Deadline { get; set; }
+        public DateTime EndDate { get; set; }
+        [Required]
+        public int Duration { get; set; }
         public User Mentor { get; set; }
+        public string MentorId { get; set; }
         public virtual ICollection<CandidateCourse> CandidatesEnrolled { get; set; }  
         public Training Training { get; set; }
     }

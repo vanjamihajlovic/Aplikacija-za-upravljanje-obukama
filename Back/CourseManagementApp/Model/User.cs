@@ -14,5 +14,6 @@ namespace CourseManagementApp.Model
         [Required]
         public Role Role { get; set; }
         public ICollection<CandidateCourse> Courses { get; set; }
+        public ICollection<Course> MentorCourses { get; set; }
     }
 }

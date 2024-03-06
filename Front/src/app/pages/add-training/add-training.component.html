@@ -13,13 +13,13 @@
             </div>
             
             <div class="buttons">
-                <button mat-raised-button class="add-button" color="primary">Add Training</button>
+                <button (click)="addTraining()" mat-raised-button class="add-button" color="primary">Add Training</button>
                 <button (click)="addCourseDialog()" mat-raised-button class="add-button" color="primary">Add Course</button>
             </div>
         </div>
       
       
-         <div style="margin-top:5%; width:40%; margin-left:5%">
+        <div style="margin-top:5%; width:40%; margin-left:5%">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
                 <!--- Note that these columns can be defined in any order.
@@ -40,7 +40,7 @@
                 <!-- Weight Column -->
                 <ng-container matColumnDef="mentor">
                   <th mat-header-cell *matHeaderCellDef> Mentor </th>
-                  <td mat-cell *matCellDef="let element"> {{element.mentor.firstName}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.mentor.firstName}} {{element.mentor.lastName}}</td>
                 </ng-container>
               
                 <!-- Symbol Column -->
@@ -49,18 +49,14 @@
                   <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="nModules">
+                <ng-container matColumnDef="numOfModules">
                     <th mat-header-cell *matHeaderCellDef> No. Modules </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nModules}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.numOfModules}} </td>
                   </ng-container>
               
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
-              
-              
           </div>
-    
         </div>
-    
     </body>

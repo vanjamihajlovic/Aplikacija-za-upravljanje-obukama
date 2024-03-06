@@ -21,19 +21,21 @@ export class CandidateComponent {
       name:  "111",
       description: "fgdfbgdfbdfb",
       startDate: new Date(12,12,1212),
-      nModules: 2,
+      numOfModules: 2,
       duration: 2,
       candidates: this.candidates,
-      mentor: new User()
+      mentor: new User(),
+      mentorId: ""
     },
     {
       name:  "222",
       description: "ggggggggg",
       startDate: new Date(12,12,1212),
-      nModules: 2,
+      numOfModules: 2,
       duration: 2,
       candidates: this.candidates,
-      mentor: new User()
+      mentor: new User(),
+      mentorId: ""
     }
     ];
 
