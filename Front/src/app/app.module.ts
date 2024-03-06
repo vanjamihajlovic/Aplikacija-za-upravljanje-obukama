@@ -25,6 +25,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MentorComponent } from './mentor/mentor.component';
+import { TablestudentsComponent } from './tablestudents/tablestudents.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     InfoComponent,
     LoginPageComponent,
     AddTrainingComponent,
-    AddCourseDialogComponent
+    AddCourseDialogComponent,
+    MentorComponent,
+    TablestudentsComponent
   ],
   imports: [
     BrowserModule,

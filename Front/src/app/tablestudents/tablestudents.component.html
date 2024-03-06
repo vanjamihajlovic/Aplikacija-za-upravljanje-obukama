@@ -1,0 +1,35 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Feedback</th>
+        <th>Ocena</th>
+        <th>Zavrsetak kursa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index" [class.table-primary]="i % 2 === 0">
+        <td>{{ item.name }}</td>
+        <td>
+          <mat-form-field>
+            <mat-label>Autosize textarea</mat-label>
+            <textarea matInput
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"></textarea>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-label>Ocena</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let rating of ratings" [value]="rating.value">{{rating.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>{{ item.zavrsetakKursa }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
