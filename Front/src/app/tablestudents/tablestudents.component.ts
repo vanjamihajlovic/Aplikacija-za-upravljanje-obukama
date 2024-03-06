@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class TablestudentsComponent {
   items: any[] = [
-    { name: 'Candidate 1', feedback: 'Dobar', ocena: 5, zavrsetakKursa: '01.01.2024' },
-    { name: 'Candidate 2', feedback: 'Odličan', ocena: 4.5, zavrsetakKursa: '15.02.2024' },
-    { name: 'Candidate 3', feedback: 'Prosečan', ocena: 3, zavrsetakKursa: '30.03.2024' }
+    { name: 'Candidate 1', feedback: "Dobar", ocena: 5, duration: '01.01.2024' },
+    { name: 'Candidate 2', feedback: "Dobar", ocena: 5, duration: '01.01.2024' },
+    { name: 'Candidate 3', feedback: "Dobar", ocena: 5, duration: '01.01.2024' },
+    { name: 'Candidate 4', feedback: 'Odličan', ocena: 4.5, duration: '15.02.2024' },
+    { name: 'Candidate 5', feedback: 'Prosečan', ocena: 3, duration: '30.03.2024' }
   ];
   isDropdownOpen: boolean[] = [];
   constructor() {
@@ -27,5 +29,9 @@ export class TablestudentsComponent {
 
   toggleDropdown(index: number): void {
     this.isDropdownOpen[index] = !this.isDropdownOpen[index];
+  }
+
+  saveItem(item: any): void {
+    console.log('Saved item:', item);
   }
 }

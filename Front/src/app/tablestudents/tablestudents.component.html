@@ -3,8 +3,8 @@
       <tr>
         <th>Name</th>
         <th>Feedback</th>
-        <th>Ocena</th>
-        <th>Zavrsetak kursa</th>
+        <th>Rating</th>
+        <th>Duration</th>
       </tr>
     </thead>
     <tbody>
@@ -22,13 +22,18 @@
         </td>
         <td>
           <mat-form-field>
-            <mat-label>Ocena</mat-label>
+            <mat-label>Rating</mat-label>
             <mat-select>
               <mat-option *ngFor="let rating of ratings" [value]="rating.value">{{rating.viewValue}}</mat-option>
             </mat-select>
           </mat-form-field>
         </td>
-        <td>{{ item.zavrsetakKursa }}</td>
+      <td>
+       <input type="date" id="duration" name="duration"/>
+    </td>
+        <td>
+            <button class="btn btn-primary" (click)="saveItem(item)">Save</button>
+          </td>
       </tr>
     </tbody>
   </table>
