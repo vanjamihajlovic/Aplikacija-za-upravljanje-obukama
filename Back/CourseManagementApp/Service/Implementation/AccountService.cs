@@ -30,5 +30,17 @@ namespace CourseManagementApp.Service.Implementation
             }
             return result;
         }
+
+        
+        public  async Task<IdentityResult> RegisterCnadidateAsync(CandidateRegistrationDTO candidateForRegistration)
+        {
+            var user = new User() { FirstName = candidateForRegistration.Name, LastName = candidateForRegistration.Surname, Email = candidateForRegistration.Email, UserName = candidateForRegistration.Email, Role = Role.CANDIDATE };
+            var result = await _userManager.CreateAsync(user, candidateForRegistration.Password);
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "CANDIDATE");
+            }
+            return result;
+        }
     }
 }

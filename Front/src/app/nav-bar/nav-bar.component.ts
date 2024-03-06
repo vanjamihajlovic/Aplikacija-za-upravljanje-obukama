@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ServiceService } from '../service.service';
 import { User } from '../shared/model/User';
-import { Mentor } from '../shared/model/Mentor';
+import { Mentor } from '../shared/model/mentor';
+import { Candidate } from '../shared/model/candidate';
 
 @Component({
   selector: 'app-nav-bar',
@@ -28,7 +29,8 @@ export class NavBarComponent implements OnInit {
   }
   user : User = new User();
   mentor: Mentor = new Mentor();
-  
+  candidate: Candidate = new Candidate();
+   
   ngOnInit(): void {
     this.authService.loginObserver.subscribe((val) => {
       this.isLogged = val;
@@ -65,6 +67,22 @@ export class NavBarComponent implements OnInit {
                 alert('Error: ' + error);
       }
     );
+  }
+
+  onSendCandidate() {
+    if (this.formData && this.formData.valid) {
+      console.log(this.candidate);
+      this._service.sendFormDataCandidate(this.candidate).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.log('Forma nije validna');
+    }
   }
 
  

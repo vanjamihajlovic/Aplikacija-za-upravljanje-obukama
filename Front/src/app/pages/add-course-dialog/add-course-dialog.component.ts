@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Course } from '../../shared/model/Course';
+import { Course } from '../../shared/model/course';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings,  } from 'ng-multiselect-dropdown';
 import { User } from '../../shared/model/User';
