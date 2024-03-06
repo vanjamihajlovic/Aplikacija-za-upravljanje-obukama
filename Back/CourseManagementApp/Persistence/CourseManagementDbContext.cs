@@ -1,9 +1,7 @@
 ﻿using CourseManagementApp.Model;
 using CourseManagementApp.Persistence.DataSeed;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace CourseManagementApp.Persistence
 {
@@ -23,15 +21,24 @@ namespace CourseManagementApp.Persistence
         {
             base.OnModelCreating(builder);
             builder.Entity<CandidateCourse>()
-                .HasKey(cc => new { cc.CandidateId, cc.CourseId});
+                .HasKey(cc => cc.Id);
+
             builder.Entity<CandidateCourse>()
                 .HasOne(cc => cc.Course)
                 .WithMany(c => c.CandidatesEnrolled)
-                .HasForeignKey(cc => cc.CourseId);
+                .HasForeignKey(cc => cc.CourseId)
+                .OnDelete(DeleteBehavior.NoAction); 
+
             builder.Entity<CandidateCourse>()
                 .HasOne(cc => cc.Candidate)
                 .WithMany(c => c.Courses)
-                .HasForeignKey(cc => cc.CandidateId);
+                .HasForeignKey(cc => cc.CandidateId)
+                .OnDelete(DeleteBehavior.Cascade); 
+
+            /*builder.Entity<Course>()
+            .HasOne<User>(c => c.Mentor)
+            .WithMany(m => m.MentorCourses)
+            .HasForeignKey(c => c.Mentor);*/
 
 
             builder.SeedUsersAndRoles();

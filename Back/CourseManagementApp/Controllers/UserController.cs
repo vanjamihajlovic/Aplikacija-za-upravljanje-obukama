@@ -1,4 +1,4 @@
-using CourseManagementApp.DTO;
+﻿using CourseManagementApp.DTO;
 using CourseManagementApp.Service.Inteface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,16 +7,15 @@ namespace CourseManagementApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IUserAuthenticationService _userAuthenticationService;
-        private readonly IAccountService _accountService;
+        private readonly IUserService _userService;
 
-        public AccountController(IUserAuthenticationService userAuthenticationService, IAccountService accountService)
+        public UserController(IUserService userService)
         {
-            _userAuthenticationService = userAuthenticationService;
-            _accountService = accountService;
+            _userService = userService;
         }
+
 
         /// <summary>
         /// Authorized for: ANYONE
@@ -29,38 +28,31 @@ namespace CourseManagementApp.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [AllowAnonymous]
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserLoginDTO userLogin)
+        [HttpGet("getAllCandidates")]
+        public ActionResult<List<CandidateDTO>> GetAllCandidates()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
 
             }
-            return Ok(await _userAuthenticationService.ValidateUserLogin(userLogin));
-        }
-
-        //[Authorize]
-        [AllowAnonymous]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
-        {
-            return Ok(await _accountService.GetUserById(id));
+            return Ok(_userService.GetAllCandidates());
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [AllowAnonymous]
-        [HttpPost("addMentor")]
-        public async Task<IActionResult> AddMentor([FromBody] MentorRegistrationDTO mentorRegistrationDTO)
+        [HttpGet("getAllMentors")]
+        public ActionResult<List<CandidateDTO>> GetAllMentors()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
 
             }
-            return Ok(await _accountService.RegisterMentorAsync(mentorRegistrationDTO));
+            return Ok(_userService.GetAllMentors());
         }
+
     }
 }

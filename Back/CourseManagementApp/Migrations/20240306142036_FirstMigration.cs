@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CourseManagementApp.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMig : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -183,8 +183,9 @@ namespace CourseManagementApp.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     NumOfModules = table.Column<int>(type: "int", nullable: false),
-                    Deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MentorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false),
+                    MentorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TrainingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -194,7 +195,8 @@ namespace CourseManagementApp.Migrations
                         name: "FK_Courses_AspNetUsers_MentorId",
                         column: x => x.MentorId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Courses_Trainings_TrainingId",
                         column: x => x.TrainingId,
@@ -207,16 +209,17 @@ namespace CourseManagementApp.Migrations
                 name: "CandidateCourses",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CandidateId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ModulesFinished = table.Column<int>(type: "int", nullable: false),
-                    FeedBack = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    FeedBack = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     Grade = table.Column<int>(type: "int", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CandidateCourses", x => new { x.CandidateId, x.CourseId });
+                    table.PrimaryKey("PK_CandidateCourses", x => x.Id);
                     table.ForeignKey(
                         name: "FK_CandidateCourses_AspNetUsers_CandidateId",
                         column: x => x.CandidateId,
@@ -227,8 +230,7 @@ namespace CourseManagementApp.Migrations
                         name: "FK_CandidateCourses_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -236,9 +238,9 @@ namespace CourseManagementApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "6201ce14-7564-48ec-b913-65446b3953a4", "45b81009-0874-46ba-8436-019e4c16a49a", "MENTOR", "MENTOR" },
-                    { "eddf7774-d6f3-49b0-b617-a1d1f2e3b8e1", "62236dca-7883-4c07-b2c5-4ae8bd4c0770", "CANDIDATE", "CANDIDATE" },
-                    { "f3d49bbd-0e70-49ba-9a86-8b94dc23a107", "ba06e07a-4083-457c-91ff-5adb14740419", "ADMINISTRATOR", "ADMINISTRATOR" }
+                    { "a3ae9a1f-8c1b-43fc-b1c9-249f16b3add7", "a17dd076-00db-44a5-8d06-488514991b48", "MENTOR", "MENTOR" },
+                    { "d17ada5c-0b17-4106-8286-5abe862eb6f6", "a40e263a-4ce6-4b9d-bc90-e5edec79937d", "CANDIDATE", "CANDIDATE" },
+                    { "d377994d-6c59-47dc-a1a2-3da843f137bd", "c80d54c1-5531-4d22-89d5-7d67e0ec4833", "ADMINISTRATOR", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -246,9 +248,9 @@ namespace CourseManagementApp.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Role", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "16b37ce0-7bec-4026-a062-5296d0741fa8", 0, "768e3ce5-175f-41b8-95a8-b4233a89a640", "User", "admin@mail.com", false, "ADMINISTRATOR", "ADMINISTRATOR", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 1, "d8034def-23aa-4106-ae83-6e0f65e48ad6", false, "admin@mail.com" },
-                    { "8292b8ae-0258-4cde-a6db-96aedacd93e7", 0, "66f678f0-b7b7-4107-901a-392528148eb6", "User", "mentor@mail.com", false, "MENTOR", "MENTOR", false, null, "MENTOR@MAIL.COM", "MENTOR@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 2, "fc9d00e7-d4c3-47ca-80ff-b12b44cfff7d", false, "mentor@mail.com" },
-                    { "a1e1d031-188c-462c-84f5-8db9c9b46c68", 0, "88420014-1818-4d89-94df-a0d91da729ea", "User", "candidate@mail.com", false, "CANDIDATE", "CANDIDATE", false, null, "CANDIDATE@MAIL.COM", "CANDIDATE@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 3, "652d39d2-f436-41a5-a3b3-f931eafc8773", false, "candidate@mail.com" }
+                    { "05e60583-b768-452a-9f5c-b9c00d203601", 0, "a8468a6d-8653-4773-bd01-1d67e88d44a5", "User", "mentor@mail.com", false, "MENTOR", "MENTOR", false, null, "MENTOR@MAIL.COM", "MENTOR@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 2, "fb365f42-9f7d-4fa4-ab0c-711aa13d0fe7", false, "mentor@mail.com" },
+                    { "4ccdaba3-de1d-4715-947a-fb9fb11d5c42", 0, "649af690-821b-486d-84ca-53a6ef3fcae8", "User", "admin@mail.com", false, "ADMINISTRATOR", "ADMINISTRATOR", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 1, "6ce53fa1-ec48-43bc-a522-a76ac7f8ea92", false, "admin@mail.com" },
+                    { "b3ca37ad-1efd-4775-8a35-965de216c7b2", 0, "94e4288e-777e-4402-9326-b0448bb7e9b1", "User", "candidate@mail.com", false, "CANDIDATE", "CANDIDATE", false, null, "CANDIDATE@MAIL.COM", "CANDIDATE@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 3, "592fbed6-1c3c-4e88-8108-74cbbbea88da", false, "candidate@mail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,9 +258,9 @@ namespace CourseManagementApp.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "f3d49bbd-0e70-49ba-9a86-8b94dc23a107", "16b37ce0-7bec-4026-a062-5296d0741fa8" },
-                    { "6201ce14-7564-48ec-b913-65446b3953a4", "8292b8ae-0258-4cde-a6db-96aedacd93e7" },
-                    { "eddf7774-d6f3-49b0-b617-a1d1f2e3b8e1", "a1e1d031-188c-462c-84f5-8db9c9b46c68" }
+                    { "a3ae9a1f-8c1b-43fc-b1c9-249f16b3add7", "05e60583-b768-452a-9f5c-b9c00d203601" },
+                    { "d377994d-6c59-47dc-a1a2-3da843f137bd", "4ccdaba3-de1d-4715-947a-fb9fb11d5c42" },
+                    { "d17ada5c-0b17-4106-8286-5abe862eb6f6", "b3ca37ad-1efd-4775-8a35-965de216c7b2" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -299,6 +301,11 @@ namespace CourseManagementApp.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CandidateCourses_CandidateId",
+                table: "CandidateCourses",
+                column: "CandidateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CandidateCourses_CourseId",

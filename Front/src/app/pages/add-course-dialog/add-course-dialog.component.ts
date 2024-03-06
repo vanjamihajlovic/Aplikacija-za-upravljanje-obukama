@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Course } from '../../shared/model/Course';
+import { Course } from '../../shared/model/course';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings,  } from 'ng-multiselect-dropdown';
 import { User } from '../../shared/model/User';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-add-course-dialog',
@@ -16,28 +17,21 @@ export class AddCourseDialogComponent {
   candidates: User[] = [];
   selectedCandidates: User[] = [];
   mentors: User[] = [];
-  selectedMentor: any;
+  selectedMentor: User = new User();
   dropdownSettings : IDropdownSettings= {};
   
 
   constructor( 
     public dialogRef: MatDialogRef<AddCourseDialogComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: Course, private fb: FormBuilder) {
+    @Inject(MAT_DIALOG_DATA) public data: Course, private fb: FormBuilder, private userService: UserService) {
       this.form = this.fb.group({
         name: [this.data.name, Validators.required],
         description: [this.data.description],
         startDate: [this.data.startDate],
-        nModules: [this.data.nModules],
+        numOfModules: [this.data.numOfModules],
         duration: [this.data.duration]
       });
-      this.candidates = [
-        { id: "a13dasd", email: "mail@mail.com", firstName: "Milan", lastName: "Milanovic", role: "CANDIDATE"},
-        { id: "a3dasdasd", email: "mail@mail.com", firstName: "Marko", lastName: "Markovic", role: "CANDIDATE"}
-      ]
-      this.mentors = [
-        { id: "adaasdsd", email: "mail@mail.com", firstName: "Saban", lastName: "Saulic", role: "MENTOR"},
-        { id: "adaad2sd", email: "mail@mail.com", firstName: "Radoje", lastName: "Mandic", role: "MENTOR"}
-      ]
+      
       this.dropdownSettings = {
         singleSelection: false,
         idField: 'id',
@@ -47,6 +41,13 @@ export class AddCourseDialogComponent {
         itemsShowLimit: 3,
         allowSearchFilter: true
       };
+      userService.getAllCandidates().subscribe(res=> {
+        console.log(res)
+        this.candidates = res;
+      });
+      userService.getAllMentors().subscribe(res=> {
+        this.mentors = res;
+      });
   }
      
   onCancel(): void { 
@@ -54,6 +55,7 @@ export class AddCourseDialogComponent {
   }  
 
   onItemSelect(item: any) {
+    console.log(item);
     this.selectedCandidates.push(item);
     this.form.value.candidates = this.selectedCandidates;
   }
@@ -68,5 +70,6 @@ export class AddCourseDialogComponent {
 
   selectMentor(mentor: User) {
     this.form.value.mentor = this.selectedMentor;
+    this.form.value.mentorId = this.selectedMentor.id;
   }
 }

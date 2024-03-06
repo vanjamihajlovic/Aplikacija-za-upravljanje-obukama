@@ -4,20 +4,21 @@ export class Course  {
     name: string = "";
     description: string = "";
     startDate!: Date;
-    nModules: number = 0;
+    numOfModules: number = 0;
     duration: number = 0;
     candidates: User[] = [];
-    mentor!: User
+    mentor: User = new User();
+    mentorId: string = "";
 
     public constructor(obj?: any) {
         if (obj) {
           this.name = obj.name;
           this.description = obj.description;
           this.startDate = obj.startDate;
-          this.nModules = obj.nModules;
+          this.numOfModules = obj.numOfModules;
           this.candidates = obj.candidates;
           this.mentor = obj.mentor;
+          this.mentorId = obj.mentorId;
         }
       }
-    
 }
