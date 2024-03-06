@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TablestudentsComponent } from '../tablestudents/tablestudents.component';
 
@@ -7,7 +7,7 @@ import { TablestudentsComponent } from '../tablestudents/tablestudents.component
   templateUrl: './mentor.component.html',
   styleUrl: './mentor.component.css'
 })
-export class MentorComponent {
+export class MentorComponent implements OnInit {
 
   kursevi = [
     {name: 'Python', description: 'Osnovni koncepti Pythona',duration: '120', module: '5'},
@@ -17,6 +17,10 @@ export class MentorComponent {
   ];
 
   constructor(public dialog: MatDialog) {}
+  ngOnInit(): void {
+  
+  }
+  
 
   openModal(kurs: any): void {
     const dialogRef = this.dialog.open(TablestudentsComponent, {
@@ -28,4 +32,5 @@ export class MentorComponent {
       console.log('The dialog was closed');
     });
 }
+
 }
