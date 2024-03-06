@@ -1,9 +1,10 @@
 .kursevi {
-    width: 350px;
-    margin: 30px 20px 20px 20px; /* Dodali smo dodatnu marginu na vrh */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-block;
-    text-align: center;
-  }
+  width: 350px;
+  margin: 30px 20px 20px 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  background-color: #4987bd;
+}
