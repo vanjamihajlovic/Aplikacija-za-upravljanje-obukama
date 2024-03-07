@@ -40,4 +40,8 @@ export class ServiceService {
     return this.http.post<any>(this.baseUrl + 'candidates', formData);
   }
 
+  getKursevi(mentorId: string){
+    return this.http.get<any[]>('/api/getAllByMentor/${mentorId}');
+  }
+
 }
