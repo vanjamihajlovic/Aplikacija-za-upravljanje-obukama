@@ -40,8 +40,9 @@ export class AddTrainingComponent implements OnInit {
 
 addTraining() : void {
   this.training.courses = this.dataSource.data;
+  console.log(this.training);
   this.trainingService.addNewTraining(this.training).subscribe(res=> {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home-admin']);
   });
 }
 
