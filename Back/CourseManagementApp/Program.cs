@@ -60,9 +60,11 @@ builder.Services.AddDbContext<CourseManagementDbContext>((sp, options) =>
 builder.Services.AddScoped<DbContext, CourseManagementDbContext>();
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
-builder.Services.AddTransient<IAccountService, AccountService>();
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<ITrainingService, TrainingService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITrainingService, TrainingService>();
+builder.Services.AddScoped<ICandidateCourseService, CandidateCourseService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IGenericRepository<Training, Guid>, GenericRepository<Training, Guid>>();
 builder.Services.AddScoped<IGenericRepository<Course, Guid>, GenericRepository<Course, Guid>>();
 builder.Services.AddScoped<IGenericRepository<CandidateCourse, Guid>, GenericRepository<CandidateCourse, Guid>>();

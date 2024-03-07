@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TablestudentsComponent } from '../tablestudents/tablestudents.component';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-mentor',
@@ -16,7 +18,7 @@ export class MentorComponent implements OnInit {
     {name: 'React', description: 'Osnovni koncepti u Reactu',duration: '120', module: '5'}
   ];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private http:HttpClient) {}
   ngOnInit(): void {
   
   }
@@ -32,5 +34,6 @@ export class MentorComponent implements OnInit {
       console.log('The dialog was closed');
     });
 }
+
 
 }
