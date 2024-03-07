@@ -22,11 +22,13 @@ namespace CourseManagementApp.Service.Implementation
         {
             Training training = _mapper.Map<Training>(trainingDTO);
             Training addedTraining = await _unitOfWork.TrainingRepository.Add(training);
-            foreach(CourseDTO courseDTO in trainingDTO.Courses)
-            {
+            //_unitOfWork.DetachAll();
+            foreach (CourseDTO courseDTO in trainingDTO.Courses)
+            {   
                 Course newCourse = _mapper.Map<Course>(courseDTO);
                 newCourse.Training = addedTraining;
-                newCourse.MentorId = courseDTO.MentorId.ToString();
+
+                //_unitOfWork.DetachAll();
                 Course addedCourse = await _unitOfWork.CourseRepository.Add(newCourse);
                 foreach (CandidateDTO candidateDTO in courseDTO.Candidates)
                 {

@@ -9,5 +9,6 @@ namespace CourseManagementApp.UnitOfWork
         public IGenericRepository<Course, Guid> CourseRepository { get; }
         public IGenericRepository<CandidateCourse, Guid> CandidateCourseRepository { get; }
         Task CompleteAsync();
+        void DetachAll();
     }
 }
