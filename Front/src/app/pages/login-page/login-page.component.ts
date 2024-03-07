@@ -22,8 +22,11 @@ export class LoginPageComponent implements OnInit {
 
   logIn(): void {
     this.authService.login(this.credentials).subscribe(res => {
-
-      this.router.navigate(['/']);
+      if(this.authService.getUserRole() == 'ADMINISTRATOR') 
+      {
+        this.router.navigate(['/home-admin']);
+      }
+      
     },
     error => this.error = true);
   }

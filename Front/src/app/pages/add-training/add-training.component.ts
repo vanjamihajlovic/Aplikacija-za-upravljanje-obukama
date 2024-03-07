@@ -7,8 +7,6 @@ import { Course } from '../../shared/model/course';
 import { TrainingService } from '../../shared/services/training.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-add-training',
   templateUrl: './add-training.component.html',
@@ -36,6 +34,7 @@ export class AddTrainingComponent implements OnInit {
       const data = this.dataSource.data;
       data.push(newCourse);
       this.dataSource.data = data;
+      
     }); 
 }
 

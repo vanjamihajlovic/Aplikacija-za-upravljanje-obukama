@@ -3,7 +3,6 @@ using CourseManagementApp.DTO;
 using CourseManagementApp.Model;
 using CourseManagementApp.Service.Inteface;
 using CourseManagementApp.UnitOfWork;
-using Microsoft.AspNetCore.Identity;
 
 namespace CourseManagementApp.Service.Implementation
 {
@@ -42,6 +41,12 @@ namespace CourseManagementApp.Service.Implementation
         {
             List<TrainingDTO> allTrainings = _mapper.Map<List<TrainingDTO>>(_unitOfWork.TrainingRepository.GetAll());
             return allTrainings;
+        }
+
+        public async Task<TrainingDTO> GetTrainingById(Guid id)
+        {
+           TrainingDTO trainingDTO = _mapper.Map<TrainingDTO>(await _unitOfWork.TrainingRepository.GetByIdAsync(id));
+           return trainingDTO;
         }
     }
 }

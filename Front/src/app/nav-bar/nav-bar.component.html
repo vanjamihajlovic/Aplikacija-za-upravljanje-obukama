@@ -19,10 +19,10 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">Info</button>
           </li>
           <li *ngIf="!isLogged" class="nav-item">
-            <button type="button" class="btn btn-primary" [routerLink]="['/login']"  data-bs-toggle="modal" data-bs-target="#exampleModalInfo">Log In</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/login']">Log In</button>
           </li>
           <li *ngIf="isLogged" class="nav-item">
-            <button type="button" class="btn btn-primary" (click)="logout()" data-bs-toggle="modal" data-bs-target="#exampleModalInfo">Log Out</button>
+            <button type="button" class="btn btn-primary" (click)="logout()">Log Out</button>
           </li>
         </ul>
         <!-- Left links -->

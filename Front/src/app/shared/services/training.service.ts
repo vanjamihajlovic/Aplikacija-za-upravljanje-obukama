@@ -25,4 +25,8 @@ import { Training } from "../model/training";
     getAllTrainings(): Observable<Training[]> {
       return this.http.get<Training[]>(this.baseURL + 'allTrainings', this.httpOptions);
     }
+
+    getTrainingById(id: string): Observable<Training> {
+      return this.http.get<Training>(this.baseURL + id, this.httpOptions);
+    }
   }

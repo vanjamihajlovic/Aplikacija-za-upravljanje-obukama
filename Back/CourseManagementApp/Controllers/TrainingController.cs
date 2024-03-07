@@ -45,5 +45,12 @@ namespace CourseManagementApp.Controllers
         {
             return Ok(_trainingService.GetAllTrainings());
         }
+
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<TrainingDTO>>> GetTrainingById(Guid id)
+        {
+            return Ok(await _trainingService.GetTrainingById(id));
+        }
     }
 }

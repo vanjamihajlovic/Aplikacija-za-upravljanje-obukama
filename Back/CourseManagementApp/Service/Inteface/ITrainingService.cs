@@ -6,5 +6,6 @@ namespace CourseManagementApp.Service.Inteface
     {
         Task AddTraining(TrainingDTO trainingDTO);
         List<TrainingDTO> GetAllTrainings();
+        Task<TrainingDTO> GetTrainingById(Guid id);    
     }
 }

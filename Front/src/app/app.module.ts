@@ -29,8 +29,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MentorComponent } from './mentor/mentor.component';
 import { TablestudentsComponent } from './tablestudents/tablestudents.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-
 import { CandidateComponent } from './candidate/candidate.component';
+import { ViewTrainingComponent } from './pages/view-training/view-training.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { CandidateComponent } from './candidate/candidate.component';
     AddCourseDialogComponent,
     MentorComponent,
     TablestudentsComponent,
-    CandidateComponent
+    CandidateComponent,
+    ViewTrainingComponent
   ],
   imports: [
     BrowserModule,

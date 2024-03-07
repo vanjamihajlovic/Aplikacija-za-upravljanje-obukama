@@ -34,7 +34,6 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loginObserver.subscribe((val) => {
       this.isLogged = val;
-      console.log(this.isLogged)
       if(this.isLogged) {
         this.userRole = this.authService.getUserRole();
         this.userId = this.authService.getUserId();
