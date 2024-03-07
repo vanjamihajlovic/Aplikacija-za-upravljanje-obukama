@@ -25,10 +25,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { MentorComponent } from './mentor/mentor.component';
 import { TablestudentsComponent } from './tablestudents/tablestudents.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { CandidateComponent } from './candidate/candidate.component';
 
@@ -63,6 +63,8 @@ import { CandidateComponent } from './candidate/candidate.component';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatExpansionModule,
+    FlexLayoutModule,
+    NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     JwtModule.forRoot({
       config: {

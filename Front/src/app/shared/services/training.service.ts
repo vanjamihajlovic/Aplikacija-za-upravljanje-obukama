@@ -21,4 +21,8 @@ import { Training } from "../model/training";
     addNewTraining(newTraining: Training): Observable<any> {
       return this.http.post<any>(this.baseURL + 'addTraining', newTraining, this.httpOptions);
     }
+
+    getAllTrainings(): Observable<Training[]> {
+      return this.http.get<Training[]>(this.baseURL + 'allTrainings', this.httpOptions);
+    }
   }

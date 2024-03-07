@@ -37,5 +37,11 @@ namespace CourseManagementApp.Service.Implementation
             }
             await _unitOfWork.CompleteAsync();
         }
+
+        public List<TrainingDTO> GetAllTrainings()
+        {
+            List<TrainingDTO> allTrainings = _mapper.Map<List<TrainingDTO>>(_unitOfWork.TrainingRepository.GetAll());
+            return allTrainings;
+        }
     }
 }

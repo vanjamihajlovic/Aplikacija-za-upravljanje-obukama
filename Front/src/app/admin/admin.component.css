@@ -1,18 +1,49 @@
-.kartica {
-    width: 350px;
-    margin: 30px 20px 20px 20px; /* Dodali smo dodatnu marginu na vrh */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-block;
-    text-align: center;
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
   }
-  
-  .slika {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  
+
+  mat-toolbar {
+    justify-content: space-between;
+}
+
+h1 {
+  font-size: 4em; /* Adjust the size as needed */
+}
+
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    margin-bottom: 16px;
+}
+
+.align{
+  width: 350px;
+  align-items: center;
+  padding-left: 50px;
+}
+
+.card-background{
+  background-color: #EDEDED;
+}
+
+
+.zoom {
+  transition: transform .3s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.07); 
+}
+
+.text-block {
+  word-wrap: break-word;
+  width: 270px;
+}
