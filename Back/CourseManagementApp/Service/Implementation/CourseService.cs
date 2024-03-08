@@ -27,13 +27,13 @@ namespace CourseManagementApp.Service.Implementation
             return coursesDto;
         }
 
-        public async Task<List<CourseDTO>> GetAllCoursesByTrainingId(Guid trainingId)
+        public async Task<List<TrainingCoursesDTO>> GetAllCoursesByTrainingId(Guid trainingId)
         {
             List<Course> coursesByMentor = _unitOfWork.CourseRepository.FindByCondition(x => x.Training.Id == trainingId).ToList();
-            List<CourseDTO> coursesDto = _mapper.Map<List<CourseDTO>>(coursesByMentor);
-            foreach(CourseDTO course in coursesDto)
+            List<TrainingCoursesDTO> coursesDto = _mapper.Map<List<TrainingCoursesDTO>>(coursesByMentor);
+            foreach(TrainingCoursesDTO course in coursesDto)
             {
-                //course.Mentor = _mapper.Map<MentorDTO>(await _userManager.FindByIdAsync(course.MentorId.ToString()));
+                course.Mentor = _mapper.Map<MentorDTO>(await _userManager.FindByIdAsync(course.MentorId.ToString()));
             }
             return coursesDto;
         }

@@ -51,7 +51,7 @@ namespace CourseManagementApp.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [AllowAnonymous]
         [HttpGet("getAllByTraining/{trainingId}")]
-        public async Task<ActionResult<List<CourseDTO>>> GetCoursesByTraining(Guid trainingId)
+        public async Task<ActionResult<List<TrainingCoursesDTO>>> GetCoursesByTraining(Guid trainingId)
         {
             return Ok(await _courseService.GetAllCoursesByTrainingId(trainingId));
         }

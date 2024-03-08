@@ -71,9 +71,6 @@ namespace CourseManagementApp.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("MentorId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -85,6 +82,9 @@ namespace CourseManagementApp.Migrations
 
                     b.Property<int>("NumOfModules")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("TrainingId")
                         .HasColumnType("uniqueidentifier");
@@ -148,22 +148,22 @@ namespace CourseManagementApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d377994d-6c59-47dc-a1a2-3da843f137bd",
-                            ConcurrencyStamp = "c80d54c1-5531-4d22-89d5-7d67e0ec4833",
+                            Id = "f4327bae-4827-460e-b2fc-8492ccc39f36",
+                            ConcurrencyStamp = "937d22c9-7616-4521-9fa1-17604eb2d8a6",
                             Name = "ADMINISTRATOR",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "d17ada5c-0b17-4106-8286-5abe862eb6f6",
-                            ConcurrencyStamp = "a40e263a-4ce6-4b9d-bc90-e5edec79937d",
+                            Id = "2dd79cf5-9a0e-4b16-b531-9eabc31a8b55",
+                            ConcurrencyStamp = "8808ee65-602b-440f-baa4-52224bbd03ec",
                             Name = "CANDIDATE",
                             NormalizedName = "CANDIDATE"
                         },
                         new
                         {
-                            Id = "a3ae9a1f-8c1b-43fc-b1c9-249f16b3add7",
-                            ConcurrencyStamp = "a17dd076-00db-44a5-8d06-488514991b48",
+                            Id = "82e63ad0-a4aa-4151-80cf-e2ca05d08d7d",
+                            ConcurrencyStamp = "e90f2e97-4dd2-44fe-9180-e7903f98572c",
                             Name = "MENTOR",
                             NormalizedName = "MENTOR"
                         });
@@ -331,18 +331,18 @@ namespace CourseManagementApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "4ccdaba3-de1d-4715-947a-fb9fb11d5c42",
-                            RoleId = "d377994d-6c59-47dc-a1a2-3da843f137bd"
+                            UserId = "899b5b84-7aac-4d6b-9ac1-13841bea24c6",
+                            RoleId = "f4327bae-4827-460e-b2fc-8492ccc39f36"
                         },
                         new
                         {
-                            UserId = "b3ca37ad-1efd-4775-8a35-965de216c7b2",
-                            RoleId = "d17ada5c-0b17-4106-8286-5abe862eb6f6"
+                            UserId = "423c160b-eca6-497d-a3ba-eb40b8348751",
+                            RoleId = "2dd79cf5-9a0e-4b16-b531-9eabc31a8b55"
                         },
                         new
                         {
-                            UserId = "05e60583-b768-452a-9f5c-b9c00d203601",
-                            RoleId = "a3ae9a1f-8c1b-43fc-b1c9-249f16b3add7"
+                            UserId = "ab0655b5-7a42-47cb-b535-014f4704f013",
+                            RoleId = "82e63ad0-a4aa-4151-80cf-e2ca05d08d7d"
                         });
                 });
 
@@ -387,9 +387,9 @@ namespace CourseManagementApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4ccdaba3-de1d-4715-947a-fb9fb11d5c42",
+                            Id = "899b5b84-7aac-4d6b-9ac1-13841bea24c6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "649af690-821b-486d-84ca-53a6ef3fcae8",
+                            ConcurrencyStamp = "8d0d1cf3-442c-43e1-9a63-c074db4c1b8f",
                             Email = "admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -397,7 +397,7 @@ namespace CourseManagementApp.Migrations
                             NormalizedUserName = "ADMIN@MAIL.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6ce53fa1-ec48-43bc-a522-a76ac7f8ea92",
+                            SecurityStamp = "c657b981-ec44-479f-9402-2767b1ad3ab0",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com",
                             FirstName = "ADMINISTRATOR",
@@ -406,9 +406,9 @@ namespace CourseManagementApp.Migrations
                         },
                         new
                         {
-                            Id = "b3ca37ad-1efd-4775-8a35-965de216c7b2",
+                            Id = "423c160b-eca6-497d-a3ba-eb40b8348751",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "94e4288e-777e-4402-9326-b0448bb7e9b1",
+                            ConcurrencyStamp = "9ec240ea-dc7f-4e73-a26f-7c1d4ea87a2c",
                             Email = "candidate@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -416,7 +416,7 @@ namespace CourseManagementApp.Migrations
                             NormalizedUserName = "CANDIDATE@MAIL.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "592fbed6-1c3c-4e88-8108-74cbbbea88da",
+                            SecurityStamp = "42f2af2a-3348-49db-955a-5aba1e623404",
                             TwoFactorEnabled = false,
                             UserName = "candidate@mail.com",
                             FirstName = "CANDIDATE",
@@ -425,9 +425,9 @@ namespace CourseManagementApp.Migrations
                         },
                         new
                         {
-                            Id = "05e60583-b768-452a-9f5c-b9c00d203601",
+                            Id = "ab0655b5-7a42-47cb-b535-014f4704f013",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a8468a6d-8653-4773-bd01-1d67e88d44a5",
+                            ConcurrencyStamp = "fe152174-b50b-415b-8f5e-e0311592bf1b",
                             Email = "mentor@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -435,7 +435,7 @@ namespace CourseManagementApp.Migrations
                             NormalizedUserName = "MENTOR@MAIL.COM",
                             PasswordHash = "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fb365f42-9f7d-4fa4-ab0c-711aa13d0fe7",
+                            SecurityStamp = "6355becd-526e-4d08-a046-d4b4fadd635e",
                             TwoFactorEnabled = false,
                             UserName = "mentor@mail.com",
                             FirstName = "MENTOR",

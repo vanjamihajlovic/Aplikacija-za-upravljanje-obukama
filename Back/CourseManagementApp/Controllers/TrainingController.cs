@@ -41,7 +41,7 @@ namespace CourseManagementApp.Controllers
 
         [AllowAnonymous]
         [HttpGet("allTrainings")]
-        public ActionResult<List<TrainingDTO>> GetTrainings() 
+        public ActionResult<List<AllTrainingsResponseDTO>> GetTrainings() 
         {
             return Ok(_trainingService.GetAllTrainings());
         }
