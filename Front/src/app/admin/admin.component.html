@@ -15,7 +15,7 @@
               {{training.description}}
           </div>
           <p style="display: inline-block;">
-            <button mat-raised-button color="primary" class="btn btn-primary">Show</button>
+            <button mat-raised-button (click)="showTraining(training.id)" color="primary" class="btn btn-primary">Show</button>
           </p>
         </mat-card-content>
       </mat-card>

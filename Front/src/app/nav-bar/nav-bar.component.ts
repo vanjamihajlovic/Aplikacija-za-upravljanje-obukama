@@ -38,6 +38,8 @@ export class NavBarComponent implements OnInit {
         this.userRole = this.authService.getUserRole();
         this.userId = this.authService.getUserId();
       }
+    }, error=> {
+      console.log(error);
     });
     this.fetchProducts();
 
@@ -56,6 +58,7 @@ export class NavBarComponent implements OnInit {
     this._service.getUserInfo(this.userId).subscribe(
       (data) => {
         this.user = data;
+        console.log(this.user.role)
         if (this.user.role == '1'){  this.user.role= "Admin"}
         else if (this.user.role == '2'){  this.user.role= "Mentor"}
         else {this.user.role = "Candidate"};
@@ -63,7 +66,6 @@ export class NavBarComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching products:', error);
-                alert('Error: ' + error);
       }
     );
   }

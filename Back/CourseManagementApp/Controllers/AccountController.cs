@@ -40,8 +40,7 @@ namespace CourseManagementApp.Controllers
             return Ok(await _userAuthenticationService.ValidateUserLogin(userLogin));
         }
 
-        //[Authorize]
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {

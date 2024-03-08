@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TrainingService } from '../shared/services/training.service';
 import { Training } from '../shared/model/training';
 import { Router } from '@angular/router';
+import { TrainingView } from '../shared/model/training-view';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,7 @@ export class AdminComponent implements OnInit{
 
   imageUrl :string = 'assets/slika.webp';
 
-  trainings: Training[] = []
+  trainings: TrainingView[] = []
 
   constructor(private trainingService: TrainingService, private router: Router) {}
 
@@ -24,5 +25,9 @@ export class AdminComponent implements OnInit{
 
   addNewTraining() {
     this.router.navigate(['/add-training']);
+  }
+
+  showTraining(id: string) {
+    this.router.navigate(['/view-training', id]);
   }
 }

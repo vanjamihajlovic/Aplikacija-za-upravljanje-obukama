@@ -3,7 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Course } from '../../shared/model/course';
 import { Training } from '../../shared/model/training';
 import { TrainingService } from '../../shared/services/training.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CourseService } from '../../shared/services/course.service';
 
 @Component({
   selector: 'app-view-training',
@@ -17,12 +18,19 @@ export class ViewTrainingComponent implements OnInit {
   dataSource = new MatTableDataSource<Course>();
   displayedColumns: string[] = ['name', 'startDate', 'mentor', 'duration', 'numOfModules'];
   public training: Training = new Training();
-
-  constructor(private trainingService: TrainingService, private router: Router) { }
+  id: string = "";
+  constructor(private trainingService: TrainingService, private route: ActivatedRoute, private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.trainingService.getTrainingById('0F8154BC-0F78-46B4-8446-08DC3DE92AD2').subscribe(res=> {
+    this.route.params.subscribe(params => {
+      this.id  = params['id'];
+    })
+    this.trainingService.getTrainingById(this.id).subscribe(res=> {
       this.training = res;
+    })
+
+    this.courseService.getAllCoursesByTrainingId(this.id).subscribe(res=> {
+      this.dataSource.data = res;
     })
   }
 

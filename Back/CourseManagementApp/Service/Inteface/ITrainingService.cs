@@ -5,7 +5,7 @@ namespace CourseManagementApp.Service.Inteface
     public interface ITrainingService
     {
         Task AddTraining(TrainingDTO trainingDTO);
-        List<TrainingDTO> GetAllTrainings();
+        List<AllTrainingsResponseDTO> GetAllTrainings();
         Task<TrainingDTO> GetTrainingById(Guid id);    
     }
 }

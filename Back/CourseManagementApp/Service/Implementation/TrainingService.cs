@@ -22,26 +22,22 @@ namespace CourseManagementApp.Service.Implementation
         {
             Training training = _mapper.Map<Training>(trainingDTO);
             Training addedTraining = await _unitOfWork.TrainingRepository.Add(training);
-            //_unitOfWork.DetachAll();
+            int i = 0;
             foreach (CourseDTO courseDTO in trainingDTO.Courses)
             {   
-                Course newCourse = _mapper.Map<Course>(courseDTO);
-                newCourse.Training = addedTraining;
-
-                //_unitOfWork.DetachAll();
-                Course addedCourse = await _unitOfWork.CourseRepository.Add(newCourse);
                 foreach (CandidateDTO candidateDTO in courseDTO.Candidates)
                 {
-                    var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = addedCourse.Id };
+                    var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = training.Courses.ElementAt(i).Id };
                     await _unitOfWork.CandidateCourseRepository.Add(candidateCourse);
                 }
+                i++;
             }
             await _unitOfWork.CompleteAsync();
         }
 
-        public List<TrainingDTO> GetAllTrainings()
+        public List<AllTrainingsResponseDTO> GetAllTrainings()
         {
-            List<TrainingDTO> allTrainings = _mapper.Map<List<TrainingDTO>>(_unitOfWork.TrainingRepository.GetAll());
+            List<AllTrainingsResponseDTO> allTrainings = _mapper.Map<List<AllTrainingsResponseDTO>>(_unitOfWork.TrainingRepository.GetAll());
             return allTrainings;
         }
 

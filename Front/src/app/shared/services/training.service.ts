@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Training } from "../model/training";
+import { TrainingView } from "../model/training-view";
 
 @Injectable({
     providedIn: 'root'
@@ -22,8 +23,8 @@ import { Training } from "../model/training";
       return this.http.post<any>(this.baseURL + 'addTraining', newTraining, this.httpOptions);
     }
 
-    getAllTrainings(): Observable<Training[]> {
-      return this.http.get<Training[]>(this.baseURL + 'allTrainings', this.httpOptions);
+    getAllTrainings(): Observable<TrainingView[]> {
+      return this.http.get<TrainingView[]>(this.baseURL + 'allTrainings', this.httpOptions);
     }
 
     getTrainingById(id: string): Observable<Training> {

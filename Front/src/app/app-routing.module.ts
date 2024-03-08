@@ -6,14 +6,16 @@ import { AddTrainingComponent } from './pages/add-training/add-training.componen
 import { MentorComponent } from './mentor/mentor.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { ViewTrainingComponent } from './pages/view-training/view-training.component';
+import { AuthGuard } from './helpers/auth.guard';
+import { RoleGuard } from './helpers/role.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
-  {path: 'add-training', component: AddTrainingComponent},
-  {path: 'home-admin', component: AdminComponent},
+  {path: 'add-training', component: AddTrainingComponent, canActivate: [AuthGuard, RoleGuard], data: { roles: ['ADMINISTRATOR'] }},
+  {path: 'home-admin', component: AdminComponent, canActivate: [AuthGuard, RoleGuard], data: { roles: ['ADMINISTRATOR'] }},
   {path: 'mentor', component: MentorComponent},
   {path: 'candidate', component: CandidateComponent},
-  {path: 'view-training', component: ViewTrainingComponent}
+  {path: 'view-training/:id', component: ViewTrainingComponent, canActivate: [AuthGuard, RoleGuard], data: { roles: ['ADMINISTRATOR'] }}
 ];
 
 @NgModule({
