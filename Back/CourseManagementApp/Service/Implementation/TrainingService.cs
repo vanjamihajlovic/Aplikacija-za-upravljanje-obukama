@@ -3,7 +3,6 @@ using CourseManagementApp.DTO;
 using CourseManagementApp.Model;
 using CourseManagementApp.Service.Inteface;
 using CourseManagementApp.UnitOfWork;
-using Microsoft.AspNetCore.Identity;
 
 namespace CourseManagementApp.Service.Implementation
 {
@@ -23,19 +22,29 @@ namespace CourseManagementApp.Service.Implementation
         {
             Training training = _mapper.Map<Training>(trainingDTO);
             Training addedTraining = await _unitOfWork.TrainingRepository.Add(training);
-            foreach(CourseDTO courseDTO in trainingDTO.Courses)
-            {
-                Course newCourse = _mapper.Map<Course>(courseDTO);
-                newCourse.Training = addedTraining;
-                newCourse.MentorId = courseDTO.MentorId.ToString();
-                Course addedCourse = await _unitOfWork.CourseRepository.Add(newCourse);
+            int i = 0;
+            foreach (CourseDTO courseDTO in trainingDTO.Courses)
+            {   
                 foreach (CandidateDTO candidateDTO in courseDTO.Candidates)
                 {
-                    var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = addedCourse.Id };
+                    var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = addedTraining.Courses.ElementAt(i).Id };
                     await _unitOfWork.CandidateCourseRepository.Add(candidateCourse);
                 }
+                i++;
             }
             await _unitOfWork.CompleteAsync();
+        }
+
+        public List<AllTrainingsResponseDTO> GetAllTrainings()
+        {
+            List<AllTrainingsResponseDTO> allTrainings = _mapper.Map<List<AllTrainingsResponseDTO>>(_unitOfWork.TrainingRepository.GetAll());
+            return allTrainings;
+        }
+
+        public async Task<TrainingDTO> GetTrainingById(Guid id)
+        {
+           TrainingDTO trainingDTO = _mapper.Map<TrainingDTO>(await _unitOfWork.TrainingRepository.GetByIdAsync(id));
+           return trainingDTO;
         }
     }
 }

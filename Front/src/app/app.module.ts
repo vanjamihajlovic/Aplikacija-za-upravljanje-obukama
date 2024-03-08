@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -25,12 +25,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { MentorComponent } from './mentor/mentor.component';
 import { TablestudentsComponent } from './tablestudents/tablestudents.component';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { CandidateComponent } from './candidate/candidate.component';
+import { ViewTrainingComponent } from './pages/view-training/view-training.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CandidateComponent } from './candidate/candidate.component';
     AddCourseDialogComponent,
     MentorComponent,
     TablestudentsComponent,
-    CandidateComponent
+    CandidateComponent,
+    ViewTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,8 @@ import { CandidateComponent } from './candidate/candidate.component';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatExpansionModule,
+    FlexLayoutModule,
+    NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -71,7 +75,9 @@ import { CandidateComponent } from './candidate/candidate.component';
     })
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

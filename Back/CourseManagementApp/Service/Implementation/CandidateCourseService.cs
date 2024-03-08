@@ -27,10 +27,10 @@ namespace CourseManagementApp.Service.Implementation
                 User candidate = await _userManager.FindByIdAsync(candidateCourse.CandidateId);
                 Course course = await _unitOfWork.CourseRepository.GetByIdAsync(candidateCourse.CourseId);
                 CandidateViewDTO candidateViewDTO = new CandidateViewDTO() { CourseDuration = course.Duration, 
-                                                                            CourseEndDate = course.EndDate, 
-                                                                            Feedback = candidateCourse.FeedBack, 
-                                                                            Grade = candidateCourse.Grade, 
-                                                                            Name = candidate.FirstName + " " + candidate.LastName };
+                                                                             CourseStartDate = course.StartDate, 
+                                                                             Feedback = candidateCourse.FeedBack, 
+                                                                             Grade = candidateCourse.Grade, 
+                                                                             Name = candidate.FirstName + " " + candidate.LastName };
                 result.Add(candidateViewDTO);
             }
 

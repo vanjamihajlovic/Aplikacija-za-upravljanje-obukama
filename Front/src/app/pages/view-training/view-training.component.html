@@ -1,20 +1,13 @@
-<div class="background-div" style="padding:0">
+<div  class="background-div" style="padding:0">
 
     <div class="flex-row" style="margin-top:5%">
         <div class="flex-col-12 form-container">
             <div id="searchRow1" class="flex-col"  style="width: 100%;">
-                <mat-form-field >
-                    <input matInput placeholder="Name" [(ngModel)]="training.name" class="full-width-input">
-                </mat-form-field>
+                <h1>{{training.name}}</h1>
         
                 <mat-form-field style="width: 70%;">
                     <textarea matInput placeholder="Description" [(ngModel)]="training.description" class="full-width-input"></textarea>
                 </mat-form-field>
-            </div>
-            
-            <div class="buttons">
-                <button (click)="addTraining()" mat-raised-button class="add-button" color="primary">Add Training</button>
-                <button (click)="addCourseDialog()" mat-raised-button class="add-button" color="primary">Add Course</button>
             </div>
         </div>
       

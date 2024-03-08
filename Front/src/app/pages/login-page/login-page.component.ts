@@ -22,8 +22,15 @@ export class LoginPageComponent implements OnInit {
 
   logIn(): void {
     this.authService.login(this.credentials).subscribe(res => {
-
-      this.router.navigate(['/']);
+      if(this.authService.getUserRole() == 'ADMINISTRATOR') 
+      {
+        this.router.navigate(['/home-admin']);
+      }else if(this.authService.getUserRole() == 'MENTOR') {
+        this.router.navigate(['/home-mentor']);
+      }else if(this.authService.getUserRole() == 'CANDIDATE') {
+        this.router.navigate(['/home-candidate']);
+      }
+      
     },
     error => this.error = true);
   }

@@ -38,5 +38,19 @@ namespace CourseManagementApp.Controllers
             await _trainingService.AddTraining(trainingDTO);
             return Ok();
         }
+
+        [AllowAnonymous]
+        [HttpGet("allTrainings")]
+        public ActionResult<List<AllTrainingsResponseDTO>> GetTrainings() 
+        {
+            return Ok(_trainingService.GetAllTrainings());
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<TrainingDTO>>> GetTrainingById(Guid id)
+        {
+            return Ok(await _trainingService.GetTrainingById(id));
+        }
     }
 }

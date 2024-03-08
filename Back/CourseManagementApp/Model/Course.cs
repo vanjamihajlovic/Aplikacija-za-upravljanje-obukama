@@ -17,7 +17,7 @@ namespace CourseManagementApp.Model
         [Required]
         public int NumOfModules { get; set; }
         [Required]
-        public DateTime EndDate { get; set; }
+        public DateTime StartDate { get; set; }
         [Required]
         public int Duration { get; set; }
         public User Mentor { get; set; }

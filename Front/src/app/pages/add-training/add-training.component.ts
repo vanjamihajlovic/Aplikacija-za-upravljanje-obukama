@@ -5,8 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddCourseDialogComponent } from '../add-course-dialog/add-course-dialog.component';
 import { Course } from '../../shared/model/course';
 import { TrainingService } from '../../shared/services/training.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-training',
@@ -21,7 +20,7 @@ export class AddTrainingComponent implements OnInit {
   displayedColumns: string[] = ['name', 'startDate', 'mentor', 'duration', 'numOfModules'];
   public training: Training = new Training();
 
-  constructor(private dialog: MatDialog, private trainingService: TrainingService) { }
+  constructor(private dialog: MatDialog, private trainingService: TrainingService, private router: Router) { }
 
   ngOnInit(): void {
    
@@ -31,16 +30,22 @@ export class AddTrainingComponent implements OnInit {
     this.dialog.open(AddCourseDialogComponent, { 
     width: '500px', 
     data: {}
-    }).afterClosed().subscribe((newCourse) => {
+    }).afterClosed().subscribe((newCourse: Course) => {
+      newCourse.startDateString = newCourse.startDate.toJSON();
+      console.log(newCourse.startDate);
       const data = this.dataSource.data;
       data.push(newCourse);
       this.dataSource.data = data;
+      
     }); 
 }
 
 addTraining() : void {
   this.training.courses = this.dataSource.data;
-  this.trainingService.addNewTraining(this.training).subscribe();
+  console.log(this.training);
+  this.trainingService.addNewTraining(this.training).subscribe(res=> {
+    this.router.navigate(['/home-admin']);
+  });
 }
 
 }

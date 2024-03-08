@@ -1,5 +1,4 @@
 ﻿using CourseManagementApp.DTO;
-using CourseManagementApp.Service.Implementation;
 using CourseManagementApp.Service.Inteface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -47,5 +46,14 @@ namespace CourseManagementApp.Controllers
             return Ok(_courseService.GetAllCoursesByMentorId(mentorId));
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
+        [HttpGet("getAllByTraining/{trainingId}")]
+        public async Task<ActionResult<List<TrainingCoursesDTO>>> GetCoursesByTraining(Guid trainingId)
+        {
+            return Ok(await _courseService.GetAllCoursesByTrainingId(trainingId));
+        }
     }
 }

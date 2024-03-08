@@ -55,7 +55,6 @@ export class AddCourseDialogComponent {
   }  
 
   onItemSelect(item: any) {
-    console.log(item);
     this.selectedCandidates.push(item);
     this.form.value.candidates = this.selectedCandidates;
   }

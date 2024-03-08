@@ -11,7 +11,9 @@ namespace CourseManagementApp.Mapper
             CreateMap<User, MentorDTO>().ReverseMap();
             CreateMap<User, CandidateDTO>().ReverseMap();
             CreateMap<Training, TrainingDTO>().ReverseMap();    
+            CreateMap<Training, AllTrainingsResponseDTO>().ReverseMap();    
             CreateMap<Course, CourseDTO>().ReverseMap();    
+            CreateMap<Course, TrainingCoursesDTO>().ReverseMap();    
         }
     }
 }

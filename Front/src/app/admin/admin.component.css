@@ -1,18 +1,86 @@
-.kartica {
-    width: 350px;
-    margin: 30px 20px 20px 20px; /* Dodali smo dodatnu marginu na vrh */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-block;
-    text-align: center;
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.custom-h1-margin {
+  margin-top: 20px; /* Adjust the margin value as needed */
+}
+
+
+.background-div {
+
+  overflow:auto;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+
+  background-image: url(/assets/background.jpg);
+  
+}
+
+
+
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background-color: rgba(0, 0, 0, 0.2); /* Adjust the alpha value (0.5) for transparency */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
   }
-  
-  .slika {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  
+
+  mat-toolbar {
+    justify-content: space-between;
+}
+
+h1 {
+  font-size: 4em; /* Adjust the size as needed */
+}
+
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    margin-bottom: 16px;
+}
+
+.align{
+  width: 350px;
+  align-items: center;
+  padding-left: 50px;
+}
+
+.card-background{
+  background-color: #EDEDED;
+}
+
+
+.zoom {
+  transition: transform .3s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.07); 
+}
+
+.text-block {
+  word-wrap: break-word;
+  width: 270px;
+}

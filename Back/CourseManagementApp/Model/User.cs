@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CourseManagementApp.Model
 {
-    public class User : IdentityUser
+    public class User : IdentityUser, IEntity<string>
     {
         [Required]
         [MaxLength(100)]

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CourseManagementApp.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class FistMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -183,7 +183,7 @@ namespace CourseManagementApp.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     NumOfModules = table.Column<int>(type: "int", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
                     MentorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TrainingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
@@ -238,9 +238,9 @@ namespace CourseManagementApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a3ae9a1f-8c1b-43fc-b1c9-249f16b3add7", "a17dd076-00db-44a5-8d06-488514991b48", "MENTOR", "MENTOR" },
-                    { "d17ada5c-0b17-4106-8286-5abe862eb6f6", "a40e263a-4ce6-4b9d-bc90-e5edec79937d", "CANDIDATE", "CANDIDATE" },
-                    { "d377994d-6c59-47dc-a1a2-3da843f137bd", "c80d54c1-5531-4d22-89d5-7d67e0ec4833", "ADMINISTRATOR", "ADMINISTRATOR" }
+                    { "2dd79cf5-9a0e-4b16-b531-9eabc31a8b55", "8808ee65-602b-440f-baa4-52224bbd03ec", "CANDIDATE", "CANDIDATE" },
+                    { "82e63ad0-a4aa-4151-80cf-e2ca05d08d7d", "e90f2e97-4dd2-44fe-9180-e7903f98572c", "MENTOR", "MENTOR" },
+                    { "f4327bae-4827-460e-b2fc-8492ccc39f36", "937d22c9-7616-4521-9fa1-17604eb2d8a6", "ADMINISTRATOR", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -248,9 +248,9 @@ namespace CourseManagementApp.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Role", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "05e60583-b768-452a-9f5c-b9c00d203601", 0, "a8468a6d-8653-4773-bd01-1d67e88d44a5", "User", "mentor@mail.com", false, "MENTOR", "MENTOR", false, null, "MENTOR@MAIL.COM", "MENTOR@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 2, "fb365f42-9f7d-4fa4-ab0c-711aa13d0fe7", false, "mentor@mail.com" },
-                    { "4ccdaba3-de1d-4715-947a-fb9fb11d5c42", 0, "649af690-821b-486d-84ca-53a6ef3fcae8", "User", "admin@mail.com", false, "ADMINISTRATOR", "ADMINISTRATOR", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 1, "6ce53fa1-ec48-43bc-a522-a76ac7f8ea92", false, "admin@mail.com" },
-                    { "b3ca37ad-1efd-4775-8a35-965de216c7b2", 0, "94e4288e-777e-4402-9326-b0448bb7e9b1", "User", "candidate@mail.com", false, "CANDIDATE", "CANDIDATE", false, null, "CANDIDATE@MAIL.COM", "CANDIDATE@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 3, "592fbed6-1c3c-4e88-8108-74cbbbea88da", false, "candidate@mail.com" }
+                    { "423c160b-eca6-497d-a3ba-eb40b8348751", 0, "9ec240ea-dc7f-4e73-a26f-7c1d4ea87a2c", "User", "candidate@mail.com", false, "CANDIDATE", "CANDIDATE", false, null, "CANDIDATE@MAIL.COM", "CANDIDATE@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 3, "42f2af2a-3348-49db-955a-5aba1e623404", false, "candidate@mail.com" },
+                    { "899b5b84-7aac-4d6b-9ac1-13841bea24c6", 0, "8d0d1cf3-442c-43e1-9a63-c074db4c1b8f", "User", "admin@mail.com", false, "ADMINISTRATOR", "ADMINISTRATOR", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 1, "c657b981-ec44-479f-9402-2767b1ad3ab0", false, "admin@mail.com" },
+                    { "ab0655b5-7a42-47cb-b535-014f4704f013", 0, "fe152174-b50b-415b-8f5e-e0311592bf1b", "User", "mentor@mail.com", false, "MENTOR", "MENTOR", false, null, "MENTOR@MAIL.COM", "MENTOR@MAIL.COM", "AQAAAAEAACcQAAAAEEXFg5ruenEa0Y+RCZiUqAcckYMRnbx8+kg3PKkms3QPkRUfXdqZLPGWpFTu6fYmog==", null, false, 2, "6355becd-526e-4d08-a046-d4b4fadd635e", false, "mentor@mail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -258,9 +258,9 @@ namespace CourseManagementApp.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "a3ae9a1f-8c1b-43fc-b1c9-249f16b3add7", "05e60583-b768-452a-9f5c-b9c00d203601" },
-                    { "d377994d-6c59-47dc-a1a2-3da843f137bd", "4ccdaba3-de1d-4715-947a-fb9fb11d5c42" },
-                    { "d17ada5c-0b17-4106-8286-5abe862eb6f6", "b3ca37ad-1efd-4775-8a35-965de216c7b2" }
+                    { "2dd79cf5-9a0e-4b16-b531-9eabc31a8b55", "423c160b-eca6-497d-a3ba-eb40b8348751" },
+                    { "f4327bae-4827-460e-b2fc-8492ccc39f36", "899b5b84-7aac-4d6b-9ac1-13841bea24c6" },
+                    { "82e63ad0-a4aa-4151-80cf-e2ca05d08d7d", "ab0655b5-7a42-47cb-b535-014f4704f013" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -19,7 +19,6 @@ namespace CourseManagementApp.Util
         {
             _userManager = userManager;
             _jwtOptions = options.Value;
-
         }
 
         public async Task<JwtSecurityToken> CreateTokenAsync(User? user)

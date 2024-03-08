@@ -30,5 +30,13 @@ namespace CourseManagementApp.UnitOfWork
         {
             _dbContext.Dispose();
         }
+
+        public void DetachAll()
+        {
+            foreach (var entry in _dbContext.ChangeTracker.Entries())
+            {
+                entry.State = EntityState.Detached;
+            }
+        }
     }
 }

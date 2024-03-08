@@ -1,6 +1,30 @@
-<div *ngFor="let kartica of kartice" class="kartica">
-    <h2>{{ kartica.name }}</h2>
-    <img [src]="kartica.imageUrl" alt="{{ kartica.name }} Slika" />
-    <p>{{ kartica.description }}</p>
-  </div>
+<div class="background-div">
   
+  <div class="container">
+    <h1 class="custom-h1-margin">Trainings</h1>
+    <button mat-raised-button color="primary" (click)="addNewTraining()" class="btn btn-outline-primary m-3 border" mat-button>Add new Training</button>
+  </div>
+    
+   
+
+  <div class="container">
+    <div fxLayout="row wrap space-evenly" fxLayoutGap="25px grid">
+      <div [fxFlex]="(100/3) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" class="zoom" *ngFor="let training of trainings">
+        <mat-card class="mat-elevation-z19 border align card-background">
+          <div class="image-container">
+          <img style="height: 200px; width: 300px" class="mt-1 mh-200 mw-200" mat-card-image mat-card-s-image src={{imageUrl}}>
+        </div>
+          <mat-card-content>
+            <mat-card-title class="text-center fs-5 fw-bold">{{training.name}}</mat-card-title>
+            <div class="text-block">
+                {{training.description}}
+            </div>
+            <p style="display: inline-block;">
+              <button mat-raised-button (click)="showTraining(training.id)" color="primary" class="btn btn-primary">Show</button>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
