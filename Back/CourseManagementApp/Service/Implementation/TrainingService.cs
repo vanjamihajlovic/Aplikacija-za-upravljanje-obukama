@@ -27,7 +27,7 @@ namespace CourseManagementApp.Service.Implementation
             {   
                 foreach (CandidateDTO candidateDTO in courseDTO.Candidates)
                 {
-                    var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = training.Courses.ElementAt(i).Id };
+                    var candidateCourse = new CandidateCourse() { CandidateId = candidateDTO.Id.ToString(), CourseId = addedTraining.Courses.ElementAt(i).Id };
                     await _unitOfWork.CandidateCourseRepository.Add(candidateCourse);
                 }
                 i++;

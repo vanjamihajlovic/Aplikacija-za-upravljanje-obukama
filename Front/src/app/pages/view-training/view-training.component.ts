@@ -30,6 +30,7 @@ export class ViewTrainingComponent implements OnInit {
     })
 
     this.courseService.getAllCoursesByTrainingId(this.id).subscribe(res=> {
+      console.log(res)
       this.dataSource.data = res;
     })
   }

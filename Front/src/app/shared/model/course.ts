@@ -3,7 +3,8 @@ import { User } from "./User";
 export class Course  {
     name: string = "";
     description: string = "";
-    startDate!: Date;
+    startDate: Date = new Date();
+    startDateString: string = "";
     numOfModules: number = 0;
     duration: number = 0;
     candidates: User[] = [];
@@ -14,6 +15,7 @@ export class Course  {
         if (obj) {
           this.name = obj.name;
           this.description = obj.description;
+          this.startDateString = obj.startDateString;
           this.startDate = obj.startDate;
           this.numOfModules = obj.numOfModules;
           this.candidates = obj.candidates;

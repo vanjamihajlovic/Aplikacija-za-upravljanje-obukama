@@ -30,7 +30,9 @@ export class AddTrainingComponent implements OnInit {
     this.dialog.open(AddCourseDialogComponent, { 
     width: '500px', 
     data: {}
-    }).afterClosed().subscribe((newCourse) => {
+    }).afterClosed().subscribe((newCourse: Course) => {
+      newCourse.startDateString = newCourse.startDate.toJSON();
+      console.log(newCourse.startDate);
       const data = this.dataSource.data;
       data.push(newCourse);
       this.dataSource.data = data;
