@@ -22,8 +22,8 @@ namespace CourseManagementApp.Controllers
         /// Authorized for: ANYONE
         /// </summary>
         /// <response code="200">Request successful, user logged in</response>
-        /// <response code="401">User cannot be authenticated</response>
         /// <response code="400">User couldn't be logged in</response>
+        /// <response code="500">Server error</response>
         ///
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
